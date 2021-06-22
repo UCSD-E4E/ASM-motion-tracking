@@ -7,6 +7,7 @@ import os
 import matplotlib.pyplot as plt
 import matplotlib.patches as ptch
 
+
 PERC_NONNOISE_MASK = 0.0005
 PIXEL_DIFF = 1  # across 2 frames
 PERC_MVMT = 0.5  # % of detected feature pts with >PIXEL_DIFF movement across 2 frames
@@ -71,7 +72,7 @@ fg_mask = create_mask(mask, old_gray, back_sub)
 # fg_mask = create_mask2(mask, old_frame, unhatched_frame)
 p0 = cv2.goodFeaturesToTrack(old_gray, mask = fg_mask, **feature_params)
 pback = p0
-spf = 1/29.91  # seconds per frame
+spf = 1/cam.get(cv2.CAP_PROP_FPS)  # seconds per frame
 frame_num = 1
 time = 0.0
 hatching = 0
@@ -87,10 +88,12 @@ while 1:
     if int(frame_num*spf) > time:
         # Check if noticeable mvmt over multiple frames in past second and print time if true
         if hatching >= MVMT_FRMS_PER_SEC and not errored:
-            print(sec_to_min(time))
+            print(sec_to_min(time) + ": hatching")
         elif errored:
-            print(str(sys.exc_info()[0]) + " occurred at time " + sec_to_min(time))
+            print(str(error) + ", line " + str(error[2].tb_lineno) + "occurred at time " + sec_to_min(time))
             errored = False
+        else:
+            print(sec_to_min(time))
         # get updated features to track
         p0 = cv2.goodFeaturesToTrack(old_gray, mask = fg_mask, **feature_params)
         pback = p0
@@ -115,8 +118,8 @@ while 1:
                 a,b = new.ravel()
                 c,d = old.ravel()
                 e,f = back.ravel()
-                img_old[int(d)][int(c)] = [255, 0, 0]
-                img_new[int(b)][int(a)] = [255, 0, 0]
+                # img_old[int(c)][int(d)] = [255, 0, 0]
+                # img_new[int(a)][int(b)] = [255, 0, 0]
                 # Check for noticeable change in position of freq pts across 2 frames
                 if abs(a-e) >= PIXEL_DIFF or abs(b-f) >= PIXEL_DIFF:
                     move_points += 1
@@ -145,7 +148,7 @@ while 1:
     except:
         # If errors occur, attempt to continue with the next frame
         errored = True
-        error = str(sys.exc_info()[0])
+        error = sys.exc_info()
         old_gray = frame_gray.copy()
         p0 = cv2.goodFeaturesToTrack(old_gray, mask=fg_mask, **feature_params)
         pback = p0
@@ -153,6 +156,6 @@ while 1:
 
 # Release all space and windows once done
 print("ended properly? at time " + sec_to_min(time))
-# cam.release()
+cam.release()
 # cv2.destroyAllWindows()
 # There are errors when it reaches the end and I haven't figured out why yet
