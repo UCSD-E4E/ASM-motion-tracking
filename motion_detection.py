@@ -1,16 +1,12 @@
 import numpy as np
 import cv2
-from scipy import ndimage
 import sys
-import glob
-import os
 import matplotlib.pyplot as plt
-import matplotlib.patches as ptch
 
 
 PERC_NONNOISE_MASK = 0.0005
-PIXEL_DIFF = 1  # across 2 frames
-PERC_MVMT = 0.5  # % of detected feature pts with >PIXEL_DIFF movement across 2 frames
+PIXEL_DIFF = 0.85  # across 2 frames
+PERC_MVMT = 0.3  # % of detected feature pts with >PIXEL_DIFF movement across 2 frames
 MVMT_FRMS_PER_SEC = 5  # out of 29, base num of frames with significant feature pt differences
 
 # create mask using OpenCV background subtractor
@@ -45,9 +41,10 @@ def sec_to_min(time):
         seconds = "0" + seconds
     return str(int(time / 60)) + ":" + seconds
 
+# try:
 # get path to video
 path = "C:\\Users\\YUSU\\Documents\\E4E"
-cam = cv2.VideoCapture(path + "\\bushmasters\\2020.06.19-01.33.16.mp4")
+cam = cv2.VideoCapture(path + "\\bushmastersTrim\\new video measures 42-50.mp4")
 # params for ShiTomasi corner detection
 feature_params = dict( maxCorners = 100,
                        qualityLevel = 0.01,
@@ -66,7 +63,7 @@ ret, old_frame = cam.read()
 old_gray = cv2.cvtColor(old_frame, cv2.COLOR_BGR2GRAY)
 # create base mask to ignore the video timestamp
 mask = np.zeros_like(old_gray)
-mask[0:250, 0:600] = 255
+mask[0:100, 0:600] = 255
 mask = cv2.bitwise_not(mask)
 fg_mask = create_mask(mask, old_gray, back_sub)
 # fg_mask = create_mask2(mask, old_frame, unhatched_frame)
@@ -87,6 +84,8 @@ while 1:
     # executes if time rolls over to a new second
     if int(frame_num*spf) > time:
         # Check if noticeable mvmt over multiple frames in past second and print time if true
+        print(hatching)
+        # Allows us to ignore artifact-induced mvmt by requiring that mvmt occur across multiple frames
         if hatching >= MVMT_FRMS_PER_SEC and not errored:
             print(sec_to_min(time) + ": hatching")
         elif errored:
@@ -120,7 +119,7 @@ while 1:
                 e,f = back.ravel()
                 # img_old[int(c)][int(d)] = [255, 0, 0]
                 # img_new[int(a)][int(b)] = [255, 0, 0]
-                # Check for noticeable change in position of freq pts across 2 frames
+                # Check for noticeable change in position of freq pts across 2 frames (to ignore small jitters)
                 if abs(a-e) >= PIXEL_DIFF or abs(b-f) >= PIXEL_DIFF:
                     move_points += 1
             # This section of code used to visualize feature points and tracked mvmt
@@ -144,6 +143,7 @@ while 1:
             pback = good_old.reshape(-1,1,2)
             p0 = good_new.reshape(-1,1,2)
         else:
+            cam.release()
             break
     except:
         # If errors occur, attempt to continue with the next frame
@@ -158,4 +158,6 @@ while 1:
 print("ended properly? at time " + sec_to_min(time))
 cam.release()
 # cv2.destroyAllWindows()
-# There are errors when it reaches the end and I haven't figured out why yet
+# H64 encoding errors occur at the end of processing original vid, but not trimmed vid?
+# except:
+#     print(sys.exc_info())
