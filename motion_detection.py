@@ -2,12 +2,13 @@ import numpy as np
 import cv2
 import sys
 import os
+import time
 import matplotlib.pyplot as plt
 
 
 PERC_NONNOISE_MASK = 0.0005
-PIXEL_DIFF = 0.85  # across 2 frames
-PERC_MVMT = 0.15  # % of detected feature pts with >PIXEL_DIFF movement across 2 frames
+PIXEL_DIFF = 0.85  # across 3 frames
+PERC_MVMT = 0.15  # % of detected feature pts with >PIXEL_DIFF movement across 3 frames
 MVMT_FRMS_PER_SEC = 9  # out of 29, base num of frames with significant feature pt differences
 
 # create mask using OpenCV background subtractor
@@ -44,11 +45,12 @@ def sec_to_min(time):
     return str(int(time / 60)) + ":" + seconds
 
 
-def detect_motion(folder, name, write=True, visual=False):
+def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
     # try:
+    start_time = time.time()
     # get path to video
     path = "C:\\Users\\YUSU\\Documents\\E4E\\"
-    cam = cv2.VideoCapture(path + folder + name + ".mp4")
+    cam = cv2.VideoCapture(path + vidfolder + name)
     # params for ShiTomasi corner detection
     feature_params = dict( maxCorners = 100,
                            qualityLevel = 0.01,
@@ -58,9 +60,21 @@ def detect_motion(folder, name, write=True, visual=False):
     lk_params = dict( winSize  = (15,15),
                       maxLevel = 2,
                       criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
-
     if write:
-        outf = open(path + folder + name + ".txt", "w")
+        if txtfolder is not None:
+            outf = open(path + txtfolder + name[:-4] + ".txt", "w")
+        elif txtfolder is None:
+            outf = open(path + vidfolder + name[:-4] + ".txt", "w")
+        # Write parameters
+        outf.write("Proportion of image detected as foreground by background subtraction in order to be determined as "
+                   "not noise and acceptable for use as mask: " + str(PERC_NONNOISE_MASK) + "\n")
+        outf.write("Minimum significant feature point movement across 3 frames: " +
+                   str(PIXEL_DIFF) + "\n")
+        outf.write("Minimum proportion of feature points with significant movement in a particular frame to qualify as "
+                   "overall movement: " + str(PERC_MVMT) + "\n")
+        outf.write(
+            "Minimum num frames in a sec with significant movement to return that movement has occurred at that time: "
+            + str(MVMT_FRMS_PER_SEC) + "\n")
     # unhatched_frame = cv2.imread(path + '/eggsFrames/frame3.jpg')
     back_sub = cv2.createBackgroundSubtractorMOG2()
     # discard first frame, as it doesn't provide a clear image
@@ -77,7 +91,7 @@ def detect_motion(folder, name, write=True, visual=False):
     pback = p0
     spf = 1/cam.get(cv2.CAP_PROP_FPS)  # seconds per frame
     frame_num = 1
-    time = 0.0
+    vidtime = 0.0
     hatching = 0
     errored = False
     error = ""
@@ -88,27 +102,28 @@ def detect_motion(folder, name, write=True, visual=False):
         ret,frame = cam.read()
         frame_num += 1
         # executes if time rolls over to a new second
-        if int(frame_num*spf) > time:
+        if int(frame_num*spf) > vidtime:
             # Check if noticeable mvmt over multiple frames in past second and print time if true
             print(hatching)
             # Allows us to ignore artifact-induced mvmt by requiring that mvmt occur across multiple frames
             if hatching >= MVMT_FRMS_PER_SEC and not errored:
-                print(sec_to_min(time) + ": hatching")
+                print(sec_to_min(vidtime) + ": hatching")
                 if write:
-                    outf.write(sec_to_min(time) + ": hatching over " + str(hatching) + " frames\n")
+                    outf.write(sec_to_min(vidtime) + ": hatching over " + str(hatching) + " frames\n")
             elif errored:
-                print(str(error) + ", line " + str(error[2].tb_lineno) + " occurred at time " + sec_to_min(time))
+                print(str(error) + ", line " + str(error[2].tb_lineno) + " occurred at time " + sec_to_min(vidtime))
                 if write:
                     outf.write(
-                     str(error) + ", line " + str(error[2].tb_lineno) + " occurred at time " + sec_to_min(time) + "\n")
+                     str(error) + ", line " + str(error[2].tb_lineno) + " occurred at time " + sec_to_min(vidtime) +
+                     "\n")
                 errored = False
             else:
-                print(sec_to_min(time))
+                print(sec_to_min(vidtime))
             # get updated features to track
             p0 = cv2.goodFeaturesToTrack(old_gray, mask = fg_mask, **feature_params)
             pback = p0
             hatching = 0
-        time = frame_num * spf
+        vidtime = frame_num * spf
         try:
             if ret:
                 frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -165,9 +180,12 @@ def detect_motion(folder, name, write=True, visual=False):
             p0 = cv2.goodFeaturesToTrack(old_gray, mask=fg_mask, **feature_params)
             pback = p0
     # Release all space and windows once done
-    print("ended properly? at time " + sec_to_min(time))
+    print("ended properly? at time " + sec_to_min(vidtime))
     if write:
-        outf.write("Ended at time " + sec_to_min(time))
+        outf.write("Ended at time " + sec_to_min(vidtime) + "\n")
+        runsec = time.time() - start_time
+        runmin = runsec / 60.0
+        outf.write("Runtime: " + str(runmin) + " minutes\n")
         outf.close()
     cam.release()
 
@@ -177,13 +195,16 @@ def detect_motion(folder, name, write=True, visual=False):
 # except:
 #     print(sys.exc_info())
 path = "C:\\Users\\YUSU\\Documents\\E4E\\"
-folder = "Tests\\"
-# detect_motion(folder, "2020.06.19-04.33.17_Short", write=False, visual=True)
-categories = os.listdir(path + folder)
-for cat in categories:
-    folder = "Tests\\" + cat + "\\"
-    vids = os.listdir(path + folder)
-    for vid in vids:
-        if vid[-4:] == ".mp4":
-            print(vid[:-4])
-            detect_motion(folder, vid[:-4])
+folder = "bushmastersTrim\\"
+detect_motion(folder, "2020.06.18-17.03.11Trim.mp4")
+# vids = os.listdir(path + folder)
+# for vid in vids:
+#     detect_motion(folder, vid, "testFiles")
+# categories = os.listdir(path + folder)
+# for cat in categories:
+#     folder = "Tests\\" + cat + "\\"
+#     vids = os.listdir(path + folder)
+#     for vid in vids:
+#         if vid[-4:] == ".mp4":
+#             print(vid[:-4])
+#             detect_motion(folder, vid)
