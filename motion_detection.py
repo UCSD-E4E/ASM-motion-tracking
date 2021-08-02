@@ -49,7 +49,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
     # try:
     start_time = time.time()
     # get path to video
-    path = "C:\\Users\\YUSU\\Documents\\E4E\\"
+    path = "C:\\Users\\clair\\Documents\\E4E\\"
     cam = cv2.VideoCapture(path + vidfolder + name)
     # params for ShiTomasi corner detection
     feature_params = dict( maxCorners = 100,
@@ -194,12 +194,11 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 # H64 encoding errors occur at the end of processing original vid, but not trimmed vid?
 # except:
 #     print(sys.exc_info())
-path = "C:\\Users\\YUSU\\Documents\\E4E\\"
-folder = "bushmastersTrim\\"
-detect_motion(folder, "2020.06.18-17.03.11Trim.mp4")
-# vids = os.listdir(path + folder)
-# for vid in vids:
-#     detect_motion(folder, vid, "testFiles")
+path = "C:\\Users\\clair\\Documents\\E4E\\"
+folder = "bushmasters\\"
+vids = os.listdir(path + folder)
+for vid in vids:
+    detect_motion(folder, vid, "testFiles\\")
 # categories = os.listdir(path + folder)
 # for cat in categories:
 #     folder = "Tests\\" + cat + "\\"

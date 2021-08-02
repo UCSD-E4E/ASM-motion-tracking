@@ -1,0 +1,15 @@
+Proportion of image detected as foreground by background subtraction in order to be determined as not noise and acceptable for use as mask: 0.0005
+Minimum significant feature point movement across 3 frames: 0.85
+Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.15
+Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
+21:08: hatching over 12 frames
+21:09: hatching over 17 frames
+21:10: hatching over 16 frames
+21:12: hatching over 12 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C8C0>), line 163 occurred at time 22:01
+22:02: hatching over 15 frames
+22:03: hatching over 23 frames
+22:04: hatching over 12 frames
+27:47: hatching over 9 frames
+Ended at time 29:59
+Runtime: 32.25399252176285 minutes
