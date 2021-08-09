@@ -6,38 +6,28 @@ import os
 import time
 import matplotlib.pyplot as plt
 
-
 PERC_NONNOISE_MASK = 0.0005
 PIXEL_DIFF = 0.85  # across 3 frames
 PERC_MVMT = 0.15  # % of detected feature pts with >PIXEL_DIFF movement across 3 frames
 MVMT_FRMS_PER_SEC = 9  # out of 29, base num of frames with significant feature pt differences
 ERR_RANGE = 4  # any supposed mvmt within +- ERR_RANGE seconds from an error is ignored
 
+
 # create mask using OpenCV background subtractor
-def create_mask(init_mask, curr_frame, subtractor, prev_mask=None):
-    fg_mask = subtractor.apply(curr_frame)
+def create_mask(init_mask, curr_frame, back1_frame, back2_frame, prev_mask=None):
+    old_diff = cv2.absdiff(back1_frame, back2_frame)
+    curr_diff = cv2.absdiff(curr_frame, back1_frame)
+    diff_img = old_diff + curr_diff
+    retval, diff_img = cv2.threshold(diff_img, 7, 255, cv2.THRESH_BINARY)
     img_size = np.shape(curr_frame)[0] * np.shape(curr_frame)[1]
-    nonzero = cv2.countNonZero(fg_mask) / img_size
+    nonzero = cv2.countNonZero(diff_img) / img_size
     if nonzero > PERC_NONNOISE_MASK:
-        mask = cv2.bitwise_and(fg_mask, init_mask)
+        mask = cv2.bitwise_and(diff_img, init_mask)
     elif not(prev_mask is None):
         mask = prev_mask
     else:
         mask = init_mask
     return mask
-
-
-# create mask using simple subtraction with unhatched eggs as background
-def create_mask2(init_mask, curr_frame, background):
-    subtr = cv2.subtract(cv2.bitwise_not(curr_frame), cv2.bitwise_not(background))
-    subtr = cv2.GaussianBlur(cv2.cvtColor(subtr, cv2.COLOR_BGR2GRAY), (5, 5), 0)
-    ret, thresh = cv2.threshold(subtr, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    img_size = np.shape(curr_frame)[0] * np.shape(curr_frame)[1]
-    nonzero = cv2.countNonZero(thresh) / img_size
-    if nonzero > 0.015:
-        return cv2.bitwise_and(thresh, init_mask)
-    else:
-        return init_mask
 
 
 def sec_to_min(time):
@@ -81,19 +71,21 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
             "Minimum num frames in a sec with significant movement to return that movement has occurred at that time: "
             + str(MVMT_FRMS_PER_SEC) + "\n")
         delayoutq = collections.deque()
-    # unhatched_frame = cv2.imread(path + '/eggsFrames/frame3.jpg')
-    back_sub = cv2.createBackgroundSubtractorMOG2()
     # discard first frame, as it doesn't provide a clear image
     ret, old_frame = cam.read()
     ret, old_frame = cam.read()
-    old_gray = cv2.cvtColor(old_frame, cv2.COLOR_BGR2GRAY)
+    old2_gray = cv2.cvtColor(old_frame, cv2.COLOR_BGR2GRAY)
+    ret, old_frame = cam.read()
+    old1_gray = cv2.cvtColor(old_frame, cv2.COLOR_BGR2GRAY)
+    ret, old_frame = cam.read()
+    frame_gray = cv2.cvtColor(old_frame, cv2.COLOR_BGR2GRAY)
     # create base mask to ignore the video timestamp
-    mask = np.zeros_like(old_gray)
+    mask = np.zeros_like(frame_gray)
     mask[0:100, 0:600] = 255
     mask = cv2.bitwise_not(mask)
-    fg_mask = create_mask(mask, old_gray, back_sub)
+    fg_mask = create_mask(mask, frame_gray, old1_gray, old2_gray)
     # fg_mask = create_mask2(mask, old_frame, unhatched_frame)
-    p0 = cv2.goodFeaturesToTrack(old_gray, mask=fg_mask, **feature_params)
+    p0 = cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params)
     pback = p0
     spf = 1/cam.get(cv2.CAP_PROP_FPS)  # seconds per frame
     frame_num = 1
@@ -139,24 +131,26 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
             else:
                 print(sec_to_min(vidtime))
             # get updated features to track
-            p0 = cv2.goodFeaturesToTrack(old_gray, mask = fg_mask, **feature_params)
+            p0 = cv2.goodFeaturesToTrack(frame_gray, mask = fg_mask, **feature_params)
             pback = p0
             hatching = 0
         vidtime = frame_num * spf
         try:
             if ret:
+                old2_gray = old1_gray
+                old1_gray = frame_gray
                 frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-                fg_mask = create_mask(mask, frame_gray, back_sub, fg_mask)
+                fg_mask = create_mask(mask, frame_gray, old1_gray, old2_gray, fg_mask)
                 # calculate optical flow
-                p1, st, err = cv2.calcOpticalFlowPyrLK(old_gray, frame_gray, p0, None, **lk_params)
+                p1, st, err = cv2.calcOpticalFlowPyrLK(old1_gray, frame_gray, p0, None, **lk_params)
                 # Select good points
                 if p1 is not None:
                     good_new = p1[st==1]
                     good_old = p0[st==1]
                     good_back = pback[st==1]
                 # Compare points to detect motion
-                img_old = cv2.cvtColor(old_gray, cv2.COLOR_GRAY2RGB)
-                img_new = cv2.cvtColor(frame_gray, cv2.COLOR_GRAY2RGB)
+                # img_old = cv2.cvtColor(old1_gray, cv2.COLOR_GRAY2RGB)
+                # img_new = cv2.cvtColor(frame_gray, cv2.COLOR_GRAY2RGB)
                 move_points = 0.0
                 for (new,old,back) in zip(good_new, good_old, good_back):
                     a,b = new.ravel()
@@ -185,8 +179,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
                 # check if there is any movement
                 # if move_points > 0:
                     # hatching = True
-                # Now update the previous frame and previous points
-                old_gray = frame_gray.copy()
+                # Now update previous points
                 pback = good_old.reshape(-1,1,2)
                 p0 = good_new.reshape(-1,1,2)
             else:
@@ -196,8 +189,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
             # If errors occur, attempt to continue with the next frame
             errored = True
             error = sys.exc_info()
-            old_gray = frame_gray.copy()
-            p0 = cv2.goodFeaturesToTrack(old_gray, mask=fg_mask, **feature_params)
+            p0 = cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params)
             pback = p0
     # Release all space and windows once done
     print("ended properly? at time " + sec_to_min(vidtime))
@@ -227,7 +219,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 #     print(sys.exc_info())
 path = "C:\\Users\\YUSU\\Documents\\E4E\\"
 folder = "bushmasters\\"
-detect_motion(folder, "2020.06.19-02.03.16.mp4", "testFiles\\")
+detect_motion(folder, "2020.06.19-01.33.16.mp4", "testFilesFD\\")
 # vids = os.listdir(path + folder)
 # for vid in vids:
 #     detect_motion(folder, vid, "testFiles")
