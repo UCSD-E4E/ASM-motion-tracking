@@ -2,6 +2,6 @@ Proportion of image detected as foreground by background subtraction in order to
 Minimum significant feature point movement across 3 frames: 0.85
 Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.15
 Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
-11:18: hatching over 12 frames
+11:18: hatching over 14 frames
 Ended at time 29:59
-Runtime: 30.969832615057626 minutes
+Runtime: 33.3030334909757 minutes

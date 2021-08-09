@@ -6,10 +6,10 @@ Minimum num frames in a sec with significant movement to return that movement ha
 21:09: hatching over 17 frames
 21:10: hatching over 16 frames
 21:12: hatching over 12 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C8C0>), line 163 occurred at time 22:01
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980180880>), line 164 occurred at time 22:01
 22:02: hatching over 15 frames
-22:03: hatching over 23 frames
+22:03: hatching over 24 frames
 22:04: hatching over 12 frames
 27:47: hatching over 9 frames
 Ended at time 29:59
-Runtime: 32.25399252176285 minutes
+Runtime: 34.435545881589256 minutes

@@ -2,24 +2,28 @@ Proportion of image detected as foreground by background subtraction in order to
 Minimum significant feature point movement across 3 frames: 0.85
 Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.15
 Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21900>), line 163 occurred at time 15:41
-15:42: hatching over 10 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21900>), line 163 occurred at time 15:48
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F218C0>), line 163 occurred at time 15:58
-15:59: hatching over 17 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21900>), line 163 occurred at time 16:04
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21E40>), line 163 occurred at time 16:14
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21900>), line 163 occurred at time 16:19
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21900>), line 163 occurred at time 16:20
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21900>), line 163 occurred at time 16:30
-16:31: hatching over 19 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F218C0>), line 163 occurred at time 16:35
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F218C0>), line 163 occurred at time 16:36
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F218C0>), line 163 occurred at time 16:46
-16:47: hatching over 9 frames
-16:48: hatching over 11 frames
-16:49: hatching over 10 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21E40>), line 163 occurred at time 16:51
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F218C0>), line 163 occurred at time 16:52
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041FC0>), line 164 occurred at time 15:41
+15:42: hatching over 14 frames
+15:44: hatching over 11 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041FC0>), line 164 occurred at time 15:48
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041980>), line 164 occurred at time 15:58
+15:59: hatching over 22 frames
+16:00: hatching over 10 frames
+16:01: hatching over 11 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041A40>), line 164 occurred at time 16:04
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041FC0>), line 164 occurred at time 16:14
+16:16: hatching over 9 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041A40>), line 164 occurred at time 16:19
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041A40>), line 164 occurred at time 16:20
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041A40>), line 164 occurred at time 16:30
+16:31: hatching over 22 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041FC0>), line 164 occurred at time 16:35
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041FC0>), line 164 occurred at time 16:36
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041FC0>), line 164 occurred at time 16:46
+16:47: hatching over 12 frames
+16:48: hatching over 12 frames
+16:49: hatching over 15 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041A40>), line 164 occurred at time 16:51
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041FC0>), line 164 occurred at time 16:52
 Ended at time 29:59
-Runtime: 31.392306963602703 minutes
+Runtime: 35.75418996810913 minutes

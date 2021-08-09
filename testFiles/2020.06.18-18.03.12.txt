@@ -2,23 +2,27 @@ Proportion of image detected as foreground by background subtraction in order to
 Minimum significant feature point movement across 3 frames: 0.85
 Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.15
 Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21CC0>), line 163 occurred at time 14:19
-14:20: hatching over 13 frames
-(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001CB47F216C0>), line 132 occurred at time 14:26
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F216C0>), line 163 occurred at time 14:36
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21CC0>), line 163 occurred at time 14:37
-14:38: hatching over 11 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21D40>), line 163 occurred at time 14:42
-(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001CB47F21CC0>), line 132 occurred at time 14:52
-(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001CB47F21D40>), line 132 occurred at time 14:53
-14:54: hatching over 14 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21D40>), line 163 occurred at time 14:58
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21D40>), line 163 occurred at time 15:08
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F216C0>), line 163 occurred at time 15:09
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21D40>), line 163 occurred at time 15:14
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21D40>), line 163 occurred at time 15:25
-15:26: hatching over 18 frames
-15:27: hatching over 9 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F21D40>), line 163 occurred at time 15:30
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x00000209800417C0>), line 164 occurred at time 14:19
+14:20: hatching over 16 frames
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x0000020980041F00>), line 132 occurred at time 14:26
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041F00>), line 164 occurred at time 14:36
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x00000209800417C0>), line 164 occurred at time 14:37
+14:38: hatching over 14 frames
+14:39: hatching over 9 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041840>), line 164 occurred at time 14:42
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x00000209800417C0>), line 132 occurred at time 14:52
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x0000020980041840>), line 132 occurred at time 14:53
+14:54: hatching over 15 frames
+14:56: hatching over 13 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041840>), line 164 occurred at time 14:58
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041840>), line 164 occurred at time 15:08
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980041700>), line 164 occurred at time 15:09
+15:11: hatching over 11 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x00000209800417C0>), line 164 occurred at time 15:14
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x00000209800417C0>), line 164 occurred at time 15:25
+15:26: hatching over 20 frames
+15:27: hatching over 14 frames
+15:28: hatching over 9 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x00000209800417C0>), line 164 occurred at time 15:30
 Ended at time 29:59
-Runtime: 31.249017588297527 minutes
+Runtime: 40.04627591768901 minutes

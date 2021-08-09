@@ -3,5 +3,6 @@ Minimum significant feature point movement across 3 frames: 0.85
 Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.15
 Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
 6:20: hatching over 10 frames
+26:45: hatching over 9 frames
 Ended at time 29:59
-Runtime: 31.00717160701752 minutes
+Runtime: 33.279033839702606 minutes

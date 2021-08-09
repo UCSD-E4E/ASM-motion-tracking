@@ -2,72 +2,79 @@ Proportion of image detected as foreground by background subtraction in order to
 Minimum significant feature point movement across 3 frames: 0.85
 Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.15
 Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
-0:17: hatching over 13 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C6C0>), line 163 occurred at time 2:26
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CC40>), line 163 occurred at time 2:27
-2:28: hatching over 12 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C6C0>), line 163 occurred at time 2:33
-2:34: hatching over 9 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C6C0>), line 163 occurred at time 2:44
-2:48: hatching over 18 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C6C0>), line 163 occurred at time 2:49
+0:17: hatching over 17 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070D00>), line 164 occurred at time 2:26
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070540>), line 164 occurred at time 2:27
+2:28: hatching over 13 frames
+2:30: hatching over 10 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070D00>), line 164 occurred at time 2:33
+2:34: hatching over 10 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070D00>), line 164 occurred at time 2:44
+2:48: hatching over 21 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070D00>), line 164 occurred at time 2:49
 2:50: hatching over 22 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CC40>), line 163 occurred at time 3:00
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070540>), line 164 occurred at time 3:00
 3:01: hatching over 15 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CC40>), line 163 occurred at time 3:05
+3:02: hatching over 11 frames
+3:03: hatching over 9 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070540>), line 164 occurred at time 3:05
 3:06: hatching over 12 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CD00>), line 163 occurred at time 3:16
-3:19: hatching over 14 frames
-3:20: hatching over 19 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CC40>), line 163 occurred at time 3:21
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070C80>), line 164 occurred at time 3:16
+3:18: hatching over 11 frames
+3:19: hatching over 17 frames
+3:20: hatching over 20 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070540>), line 164 occurred at time 3:21
 3:22: hatching over 11 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CD00>), line 163 occurred at time 3:32
-3:34: hatching over 16 frames
-3:36: hatching over 10 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CC40>), line 163 occurred at time 3:37
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070C80>), line 164 occurred at time 3:32
+3:33: hatching over 9 frames
+3:34: hatching over 18 frames
+3:35: hatching over 9 frames
+3:36: hatching over 14 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070540>), line 164 occurred at time 3:37
+3:38: hatching over 9 frames
 4:06: hatching over 30 frames
-4:14: hatching over 26 frames
+4:14: hatching over 28 frames
 4:15: hatching over 30 frames
-4:16: hatching over 21 frames
-4:17: hatching over 20 frames
+4:16: hatching over 22 frames
+4:17: hatching over 21 frames
 4:18: hatching over 30 frames
-4:19: hatching over 24 frames
+4:19: hatching over 25 frames
 4:20: hatching over 30 frames
 4:22: hatching over 17 frames
 4:23: hatching over 30 frames
-4:24: hatching over 17 frames
+4:24: hatching over 19 frames
 4:26: hatching over 30 frames
 4:27: hatching over 28 frames
-4:28: hatching over 19 frames
-4:29: hatching over 21 frames
+4:28: hatching over 23 frames
+4:29: hatching over 23 frames
 4:30: hatching over 22 frames
-4:31: hatching over 14 frames
+4:31: hatching over 16 frames
 4:35: hatching over 24 frames
 4:36: hatching over 30 frames
 4:37: hatching over 30 frames
 4:38: hatching over 30 frames
 4:39: hatching over 28 frames
-4:40: hatching over 27 frames
+4:40: hatching over 28 frames
 4:41: hatching over 28 frames
 4:42: hatching over 30 frames
-4:43: hatching over 16 frames
-4:44: hatching over 19 frames
-4:46: hatching over 10 frames
+4:43: hatching over 17 frames
+4:44: hatching over 20 frames
+4:46: hatching over 13 frames
 4:47: hatching over 30 frames
 4:48: hatching over 30 frames
-4:49: hatching over 22 frames
-4:50: hatching over 22 frames
-4:51: hatching over 18 frames
-4:52: hatching over 16 frames
-4:53: hatching over 23 frames
-4:54: hatching over 24 frames
-4:55: hatching over 16 frames
-4:56: hatching over 23 frames
-4:58: hatching over 24 frames
-5:01: hatching over 10 frames
+4:49: hatching over 25 frames
+4:50: hatching over 23 frames
+4:51: hatching over 23 frames
+4:52: hatching over 22 frames
+4:53: hatching over 25 frames
+4:54: hatching over 26 frames
+4:55: hatching over 19 frames
+4:56: hatching over 26 frames
+4:58: hatching over 26 frames
+5:01: hatching over 12 frames
 5:04: hatching over 26 frames
 5:05: hatching over 28 frames
-5:06: hatching over 24 frames
+5:06: hatching over 26 frames
 5:07: hatching over 12 frames
 5:08: hatching over 25 frames
 5:09: hatching over 30 frames
@@ -76,207 +83,208 @@ Minimum num frames in a sec with significant movement to return that movement ha
 5:17: hatching over 29 frames
 5:18: hatching over 30 frames
 5:19: hatching over 29 frames
-5:20: hatching over 14 frames
+5:20: hatching over 16 frames
 5:22: hatching over 23 frames
-5:23: hatching over 21 frames
-5:29: hatching over 9 frames
-5:31: hatching over 28 frames
-5:32: hatching over 20 frames
+5:23: hatching over 22 frames
+5:29: hatching over 10 frames
+5:31: hatching over 29 frames
+5:32: hatching over 21 frames
 5:33: hatching over 19 frames
-5:34: hatching over 14 frames
-5:35: hatching over 17 frames
+5:34: hatching over 16 frames
+5:35: hatching over 19 frames
 5:36: hatching over 27 frames
 5:37: hatching over 30 frames
 5:38: hatching over 30 frames
-5:39: hatching over 14 frames
-5:40: hatching over 28 frames
-5:41: hatching over 22 frames
-5:42: hatching over 21 frames
+5:39: hatching over 17 frames
+5:40: hatching over 29 frames
+5:41: hatching over 27 frames
+5:42: hatching over 22 frames
 5:43: hatching over 23 frames
-5:44: hatching over 18 frames
-5:45: hatching over 24 frames
+5:44: hatching over 20 frames
+5:45: hatching over 29 frames
 5:46: hatching over 23 frames
 5:47: hatching over 21 frames
-5:48: hatching over 19 frames
-5:50: hatching over 23 frames
-5:52: hatching over 29 frames
+5:48: hatching over 20 frames
+5:50: hatching over 25 frames
+5:52: hatching over 30 frames
 5:53: hatching over 24 frames
 5:54: hatching over 29 frames
 5:55: hatching over 30 frames
-5:56: hatching over 16 frames
-5:59: hatching over 15 frames
+5:56: hatching over 17 frames
+5:59: hatching over 20 frames
 6:00: hatching over 28 frames
-6:01: hatching over 23 frames
+6:01: hatching over 24 frames
 6:02: hatching over 18 frames
 6:03: hatching over 30 frames
-6:04: hatching over 27 frames
-6:05: hatching over 26 frames
-6:06: hatching over 21 frames
+6:04: hatching over 29 frames
+6:05: hatching over 28 frames
+6:06: hatching over 22 frames
 6:07: hatching over 29 frames
-6:08: hatching over 19 frames
-6:09: hatching over 26 frames
-6:10: hatching over 19 frames
+6:08: hatching over 20 frames
+6:09: hatching over 27 frames
+6:10: hatching over 21 frames
 6:12: hatching over 29 frames
-6:13: hatching over 21 frames
-6:14: hatching over 21 frames
-6:19: hatching over 28 frames
+6:13: hatching over 24 frames
+6:14: hatching over 24 frames
+6:19: hatching over 29 frames
 6:20: hatching over 29 frames
-6:21: hatching over 10 frames
+6:21: hatching over 14 frames
 6:24: hatching over 30 frames
-6:25: hatching over 27 frames
+6:25: hatching over 29 frames
 6:26: hatching over 29 frames
-6:29: hatching over 28 frames
-6:30: hatching over 21 frames
-6:33: hatching over 16 frames
+6:29: hatching over 29 frames
+6:30: hatching over 22 frames
+6:33: hatching over 17 frames
 6:34: hatching over 29 frames
-6:35: hatching over 23 frames
+6:35: hatching over 25 frames
 6:36: hatching over 19 frames
 6:37: hatching over 21 frames
 6:38: hatching over 30 frames
 6:39: hatching over 30 frames
-6:40: hatching over 27 frames
+6:40: hatching over 28 frames
 6:41: hatching over 26 frames
-6:42: hatching over 29 frames
-6:43: hatching over 12 frames
-6:44: hatching over 13 frames
-6:45: hatching over 9 frames
+6:42: hatching over 30 frames
+6:43: hatching over 13 frames
+6:44: hatching over 15 frames
+6:45: hatching over 11 frames
 6:46: hatching over 27 frames
 6:47: hatching over 9 frames
-6:48: hatching over 20 frames
-6:49: hatching over 25 frames
-6:50: hatching over 28 frames
-6:54: hatching over 18 frames
+6:48: hatching over 21 frames
+6:49: hatching over 26 frames
+6:50: hatching over 30 frames
+6:54: hatching over 19 frames
 6:55: hatching over 23 frames
 6:56: hatching over 30 frames
-6:59: hatching over 19 frames
-7:00: hatching over 27 frames
-7:01: hatching over 22 frames
+6:59: hatching over 20 frames
+7:00: hatching over 29 frames
+7:01: hatching over 23 frames
 7:02: hatching over 30 frames
 7:03: hatching over 19 frames
 7:04: hatching over 27 frames
 7:05: hatching over 30 frames
 7:07: hatching over 29 frames
-7:08: hatching over 27 frames
-7:09: hatching over 27 frames
+7:08: hatching over 29 frames
+7:09: hatching over 28 frames
 7:10: hatching over 30 frames
 7:11: hatching over 30 frames
 7:12: hatching over 25 frames
 7:13: hatching over 30 frames
-7:14: hatching over 19 frames
-7:17: hatching over 27 frames
+7:14: hatching over 22 frames
+7:17: hatching over 29 frames
 7:18: hatching over 26 frames
 7:19: hatching over 28 frames
 7:20: hatching over 30 frames
-7:21: hatching over 29 frames
+7:21: hatching over 30 frames
 7:24: hatching over 30 frames
 7:25: hatching over 30 frames
-7:26: hatching over 19 frames
-7:27: hatching over 20 frames
+7:26: hatching over 21 frames
+7:27: hatching over 23 frames
 7:28: hatching over 22 frames
-7:29: hatching over 23 frames
+7:29: hatching over 24 frames
 7:30: hatching over 29 frames
 7:31: hatching over 29 frames
 7:32: hatching over 30 frames
 7:33: hatching over 30 frames
 7:34: hatching over 30 frames
 7:35: hatching over 30 frames
-7:39: hatching over 27 frames
-7:40: hatching over 25 frames
-7:41: hatching over 24 frames
+7:39: hatching over 29 frames
+7:40: hatching over 28 frames
+7:41: hatching over 28 frames
 7:44: hatching over 30 frames
 7:45: hatching over 26 frames
-7:46: hatching over 13 frames
-7:48: hatching over 20 frames
+7:46: hatching over 17 frames
+7:48: hatching over 23 frames
 7:49: hatching over 15 frames
 7:50: hatching over 30 frames
 7:51: hatching over 30 frames
 7:52: hatching over 29 frames
 7:53: hatching over 30 frames
 7:54: hatching over 27 frames
-7:55: hatching over 27 frames
+7:55: hatching over 28 frames
 7:57: hatching over 30 frames
-7:58: hatching over 19 frames
+7:58: hatching over 20 frames
 7:59: hatching over 11 frames
-8:00: hatching over 19 frames
+8:00: hatching over 24 frames
 8:01: hatching over 15 frames
 8:05: hatching over 30 frames
 8:06: hatching over 30 frames
 8:07: hatching over 30 frames
 8:08: hatching over 30 frames
 8:09: hatching over 30 frames
-8:10: hatching over 28 frames
+8:10: hatching over 29 frames
 8:11: hatching over 28 frames
-8:15: hatching over 17 frames
-8:16: hatching over 9 frames
+8:15: hatching over 26 frames
+8:16: hatching over 14 frames
 8:17: hatching over 25 frames
-8:18: hatching over 19 frames
-8:19: hatching over 22 frames
+8:18: hatching over 23 frames
+8:19: hatching over 26 frames
 8:20: hatching over 30 frames
-8:24: hatching over 10 frames
+8:24: hatching over 12 frames
 8:25: hatching over 9 frames
 8:26: hatching over 30 frames
-8:27: hatching over 26 frames
-8:28: hatching over 29 frames
-8:29: hatching over 24 frames
+8:27: hatching over 27 frames
+8:28: hatching over 30 frames
+8:29: hatching over 25 frames
 8:30: hatching over 29 frames
 8:31: hatching over 29 frames
 8:32: hatching over 23 frames
-8:36: hatching over 16 frames
-8:38: hatching over 27 frames
-8:39: hatching over 10 frames
-8:40: hatching over 10 frames
-8:41: hatching over 14 frames
-8:42: hatching over 15 frames
+8:36: hatching over 17 frames
+8:37: hatching over 9 frames
+8:38: hatching over 28 frames
+8:39: hatching over 12 frames
+8:40: hatching over 13 frames
+8:41: hatching over 17 frames
+8:42: hatching over 17 frames
 8:43: hatching over 30 frames
 8:44: hatching over 21 frames
 8:45: hatching over 25 frames
 8:46: hatching over 30 frames
 8:49: hatching over 27 frames
 8:50: hatching over 29 frames
-8:51: hatching over 15 frames
+8:51: hatching over 19 frames
 8:52: hatching over 30 frames
 8:53: hatching over 30 frames
 8:56: hatching over 30 frames
-8:57: hatching over 23 frames
-8:58: hatching over 10 frames
-9:03: hatching over 15 frames
+8:57: hatching over 25 frames
+8:58: hatching over 11 frames
+9:03: hatching over 18 frames
 9:04: hatching over 30 frames
 9:05: hatching over 30 frames
-9:06: hatching over 18 frames
+9:06: hatching over 20 frames
 9:07: hatching over 22 frames
 9:08: hatching over 17 frames
 9:09: hatching over 29 frames
-9:10: hatching over 21 frames
+9:10: hatching over 26 frames
 9:11: hatching over 30 frames
 9:12: hatching over 28 frames
 9:13: hatching over 30 frames
-9:14: hatching over 19 frames
+9:14: hatching over 21 frames
 9:15: hatching over 30 frames
 9:16: hatching over 30 frames
-9:17: hatching over 9 frames
-9:18: hatching over 28 frames
-9:19: hatching over 28 frames
+9:17: hatching over 11 frames
+9:18: hatching over 29 frames
+9:19: hatching over 29 frames
 9:20: hatching over 30 frames
-9:23: hatching over 29 frames
+9:23: hatching over 30 frames
 9:24: hatching over 30 frames
 9:25: hatching over 30 frames
 9:26: hatching over 30 frames
 9:27: hatching over 17 frames
-9:29: hatching over 10 frames
+9:29: hatching over 12 frames
 9:30: hatching over 30 frames
-9:31: hatching over 20 frames
-9:32: hatching over 24 frames
+9:31: hatching over 22 frames
+9:32: hatching over 26 frames
 9:35: hatching over 30 frames
 9:36: hatching over 23 frames
 9:37: hatching over 30 frames
-9:38: hatching over 23 frames
-9:39: hatching over 22 frames
-9:40: hatching over 27 frames
-9:41: hatching over 21 frames
+9:38: hatching over 24 frames
+9:39: hatching over 24 frames
+9:40: hatching over 28 frames
+9:41: hatching over 24 frames
 9:42: hatching over 30 frames
 9:43: hatching over 29 frames
-9:44: hatching over 18 frames
-9:45: hatching over 15 frames
+9:44: hatching over 19 frames
+9:45: hatching over 17 frames
 9:47: hatching over 25 frames
 9:50: hatching over 13 frames
 9:51: hatching over 22 frames
@@ -289,91 +297,96 @@ Minimum num frames in a sec with significant movement to return that movement ha
 9:59: hatching over 30 frames
 10:00: hatching over 30 frames
 10:01: hatching over 29 frames
-10:02: hatching over 27 frames
+10:02: hatching over 28 frames
 10:03: hatching over 30 frames
 10:04: hatching over 30 frames
 10:05: hatching over 30 frames
 10:06: hatching over 30 frames
-10:07: hatching over 22 frames
+10:07: hatching over 23 frames
 10:08: hatching over 30 frames
 10:09: hatching over 30 frames
 10:10: hatching over 30 frames
 10:11: hatching over 30 frames
-10:12: hatching over 25 frames
-10:18: hatching over 27 frames
-10:22: hatching over 10 frames
-10:28: hatching over 23 frames
-10:29: hatching over 15 frames
-10:34: hatching over 9 frames
-10:36: hatching over 13 frames
+10:12: hatching over 26 frames
+10:18: hatching over 29 frames
+10:22: hatching over 13 frames
+10:28: hatching over 26 frames
+10:29: hatching over 17 frames
+10:34: hatching over 15 frames
+10:36: hatching over 15 frames
 10:37: hatching over 30 frames
-10:38: hatching over 11 frames
+10:38: hatching over 14 frames
 10:47: hatching over 28 frames
-10:49: hatching over 17 frames
-10:50: hatching over 24 frames
-10:55: hatching over 10 frames
+10:49: hatching over 20 frames
+10:50: hatching over 25 frames
+10:55: hatching over 11 frames
 11:32: hatching over 12 frames
-11:39: hatching over 27 frames
-11:41: hatching over 11 frames
+11:39: hatching over 28 frames
+11:40: hatching over 9 frames
+11:41: hatching over 14 frames
+11:47: hatching over 13 frames
 11:49: hatching over 28 frames
 11:50: hatching over 30 frames
 11:51: hatching over 24 frames
-11:52: hatching over 20 frames
-11:54: hatching over 13 frames
-11:55: hatching over 19 frames
-11:57: hatching over 9 frames
-11:58: hatching over 17 frames
+11:52: hatching over 21 frames
+11:54: hatching over 16 frames
+11:55: hatching over 21 frames
+11:57: hatching over 10 frames
+11:58: hatching over 18 frames
 11:59: hatching over 28 frames
-12:00: hatching over 17 frames
-12:35: hatching over 12 frames
-12:39: hatching over 21 frames
-12:40: hatching over 22 frames
-12:41: hatching over 21 frames
-12:42: hatching over 16 frames
-12:43: hatching over 12 frames
-12:45: hatching over 11 frames
-12:46: hatching over 9 frames
-12:52: hatching over 13 frames
-12:53: hatching over 16 frames
-14:45: hatching over 23 frames
-14:53: hatching over 15 frames
+12:00: hatching over 18 frames
+12:35: hatching over 13 frames
+12:39: hatching over 24 frames
+12:40: hatching over 25 frames
+12:41: hatching over 23 frames
+12:42: hatching over 17 frames
+12:43: hatching over 15 frames
+12:45: hatching over 15 frames
+12:46: hatching over 11 frames
+12:51: hatching over 9 frames
+12:52: hatching over 15 frames
+12:53: hatching over 23 frames
+12:57: hatching over 10 frames
+14:45: hatching over 26 frames
+14:53: hatching over 18 frames
 14:55: hatching over 28 frames
-14:59: hatching over 12 frames
-15:00: hatching over 16 frames
+14:59: hatching over 15 frames
+15:00: hatching over 21 frames
 15:55: hatching over 27 frames
 16:14: hatching over 27 frames
+16:22: hatching over 9 frames
 16:56: hatching over 28 frames
-17:04: hatching over 13 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB00001D40>), line 163 occurred at time 17:18
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CC40>), line 163 occurred at time 17:19
-17:29: hatching over 11 frames
-17:41: hatching over 21 frames
-17:46: hatching over 20 frames
-17:47: hatching over 9 frames
-17:48: hatching over 23 frames
-17:49: hatching over 26 frames
-17:50: hatching over 15 frames
+17:04: hatching over 14 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000002098019F240>), line 164 occurred at time 17:18
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070540>), line 164 occurred at time 17:19
+17:29: hatching over 14 frames
+17:41: hatching over 22 frames
+17:46: hatching over 24 frames
+17:47: hatching over 11 frames
+17:48: hatching over 26 frames
+17:49: hatching over 28 frames
+17:50: hatching over 16 frames
 17:51: hatching over 12 frames
-17:56: hatching over 26 frames
+17:56: hatching over 27 frames
 18:00: hatching over 15 frames
 18:01: hatching over 30 frames
-18:02: hatching over 21 frames
+18:02: hatching over 25 frames
 18:06: hatching over 9 frames
 18:07: hatching over 30 frames
 18:08: hatching over 26 frames
 18:09: hatching over 15 frames
 18:16: hatching over 11 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB00001FC0>), line 163 occurred at time 18:17
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000002098019F740>), line 164 occurred at time 18:17
 18:19: hatching over 20 frames
 18:20: hatching over 14 frames
 18:21: hatching over 19 frames
 18:22: hatching over 12 frames
 18:23: hatching over 15 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB00001FC0>), line 163 occurred at time 18:24
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CC40>), line 163 occurred at time 18:28
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CC40>), line 163 occurred at time 18:29
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000002098019F740>), line 164 occurred at time 18:24
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070540>), line 164 occurred at time 18:28
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070540>), line 164 occurred at time 18:29
 24:49: hatching over 11 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CC40>), line 163 occurred at time 24:50
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070540>), line 164 occurred at time 24:50
 24:56: hatching over 22 frames
 24:57: hatching over 28 frames
 24:58: hatching over 30 frames
@@ -385,7 +398,7 @@ Minimum num frames in a sec with significant movement to return that movement ha
 25:09: hatching over 24 frames
 25:10: hatching over 25 frames
 25:11: hatching over 30 frames
-25:12: hatching over 23 frames
+25:12: hatching over 24 frames
 25:13: hatching over 30 frames
 25:14: hatching over 20 frames
 25:19: hatching over 30 frames
@@ -395,7 +408,7 @@ Minimum num frames in a sec with significant movement to return that movement ha
 25:23: hatching over 27 frames
 25:24: hatching over 29 frames
 25:25: hatching over 18 frames
-25:26: hatching over 21 frames
+25:26: hatching over 23 frames
 25:27: hatching over 14 frames
 25:28: hatching over 29 frames
 25:29: hatching over 30 frames
@@ -403,7 +416,7 @@ Minimum num frames in a sec with significant movement to return that movement ha
 25:31: hatching over 26 frames
 25:32: hatching over 30 frames
 25:33: hatching over 30 frames
-25:34: hatching over 16 frames
+25:34: hatching over 17 frames
 25:36: hatching over 17 frames
 25:38: hatching over 26 frames
 25:39: hatching over 15 frames
@@ -411,7 +424,7 @@ Minimum num frames in a sec with significant movement to return that movement ha
 25:41: hatching over 21 frames
 25:42: hatching over 25 frames
 25:43: hatching over 30 frames
-25:44: hatching over 20 frames
+25:44: hatching over 21 frames
 25:45: hatching over 30 frames
 25:46: hatching over 30 frames
 25:47: hatching over 28 frames
@@ -424,7 +437,7 @@ Minimum num frames in a sec with significant movement to return that movement ha
 25:54: hatching over 30 frames
 25:55: hatching over 30 frames
 25:56: hatching over 30 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB00001FC0>), line 163 occurred at time 25:57
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000002098019F740>), line 164 occurred at time 25:57
 25:58: hatching over 30 frames
 25:59: hatching over 30 frames
 26:00: hatching over 30 frames
@@ -432,53 +445,56 @@ Minimum num frames in a sec with significant movement to return that movement ha
 26:02: hatching over 30 frames
 26:03: hatching over 30 frames
 26:04: hatching over 30 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4CC40>), line 163 occurred at time 26:06
-26:07: hatching over 28 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x00000209801807C0>), line 164 occurred at time 26:06
+26:07: hatching over 29 frames
 26:08: hatching over 30 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB00001340>), line 163 occurred at time 26:09
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980180600>), line 164 occurred at time 26:09
 26:10: hatching over 21 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C640>), line 163 occurred at time 26:11
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980180200>), line 164 occurred at time 26:11
 26:12: hatching over 30 frames
 26:13: hatching over 22 frames
 26:14: hatching over 11 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C700>), line 163 occurred at time 26:15
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980180600>), line 164 occurred at time 26:15
 26:16: hatching over 11 frames
 26:17: hatching over 26 frames
-26:18: hatching over 20 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C640>), line 163 occurred at time 26:19
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C640>), line 163 occurred at time 26:20
+26:18: hatching over 22 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980180200>), line 164 occurred at time 26:19
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980180200>), line 164 occurred at time 26:20
 26:24: hatching over 22 frames
-26:25: hatching over 23 frames
+26:25: hatching over 25 frames
 26:26: hatching over 13 frames
 26:27: hatching over 21 frames
-26:28: hatching over 10 frames
-26:31: hatching over 11 frames
-26:32: hatching over 9 frames
+26:28: hatching over 11 frames
+26:31: hatching over 12 frames
+26:32: hatching over 10 frames
 26:33: hatching over 12 frames
-26:34: hatching over 13 frames
-26:49: hatching over 21 frames
+26:34: hatching over 14 frames
+26:40: hatching over 9 frames
+26:49: hatching over 22 frames
 26:50: hatching over 19 frames
-26:51: hatching over 16 frames
+26:51: hatching over 18 frames
 26:54: hatching over 24 frames
-26:55: hatching over 24 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C640>), line 163 occurred at time 26:56
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C6C0>), line 163 occurred at time 26:57
+26:55: hatching over 25 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980180200>), line 164 occurred at time 26:56
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x00000209801807C0>), line 164 occurred at time 26:57
 26:58: hatching over 23 frames
 26:59: hatching over 12 frames
-27:00: hatching over 19 frames
+27:00: hatching over 20 frames
 27:01: hatching over 9 frames
 27:02: hatching over 15 frames
 27:06: hatching over 10 frames
 27:07: hatching over 11 frames
+27:12: hatching over 13 frames
 27:18: hatching over 23 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001CB47F4C040>), line 163 occurred at time 27:22
-(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001CB47F4C6C0>), line 132 occurred at time 27:32
-27:43: hatching over 16 frames
-27:44: hatching over 10 frames
-27:45: hatching over 15 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980180500>), line 164 occurred at time 27:22
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x00000209801807C0>), line 132 occurred at time 27:32
+27:43: hatching over 17 frames
+27:44: hatching over 11 frames
+27:45: hatching over 16 frames
+27:46: hatching over 9 frames
 27:47: hatching over 22 frames
 27:48: hatching over 26 frames
-27:49: hatching over 9 frames
+27:49: hatching over 11 frames
 27:50: hatching over 13 frames
 27:51: hatching over 13 frames
 27:53: hatching over 14 frames
@@ -486,13 +502,13 @@ Minimum num frames in a sec with significant movement to return that movement ha
 27:55: hatching over 10 frames
 27:56: hatching over 14 frames
 27:57: hatching over 10 frames
-27:59: hatching over 13 frames
+27:59: hatching over 17 frames
 28:00: hatching over 12 frames
 28:01: hatching over 14 frames
 28:02: hatching over 10 frames
 28:03: hatching over 10 frames
 28:04: hatching over 17 frames
-28:05: hatching over 11 frames
+28:05: hatching over 12 frames
 28:06: hatching over 11 frames
 Ended at time 29:59
-Runtime: 35.36391092936198 minutes
+Runtime: 37.15520470142364 minutes
