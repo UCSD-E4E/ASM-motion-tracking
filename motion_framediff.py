@@ -20,7 +20,7 @@ def create_mask(init_mask, fqueue, prev_mask=None):
     diff_img = np.zeros_like(fqueue[0])
     if len(fqueue) > 1:
         for ifr in range(len(fqueue)-1):
-            cv2.bitwise_and(diff_img, cv2.absdiff(fqueue[ifr], fqueue[ifr+1]))
+            diff_img = cv2.bitwise_or(diff_img, cv2.absdiff(fqueue[ifr], fqueue[ifr+1]))
     retval, diff_img = cv2.threshold(diff_img, FRAME_DIFF_THRESH, 255, cv2.THRESH_BINARY)
     img_size = np.shape(diff_img)[0] * np.shape(diff_img)[1]
     nonzero = cv2.countNonZero(diff_img) / img_size
@@ -46,7 +46,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
     # try:
     start_time = time.time()
     # get path to video
-    path = "C:\\Users\\clair\\Documents\\E4E\\"
+    path = "C:\\Users\\YUSU\\Documents\\E4E\\"
     cam = cv2.VideoCapture(path + vidfolder + name)
     # params for ShiTomasi corner detection
     feature_params = dict( maxCorners = 100,
@@ -233,7 +233,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 # H64 encoding errors occur at the end of processing original vid, but not trimmed vid?
 # except:
 #     print(sys.exc_info())
-path = "C:\\Users\\clair\\Documents\\E4E\\"
+path = "C:\\Users\\YUSU\\Documents\\E4E\\"
 folder = "bushmasters\\"
 detect_motion(folder, "2020.06.19-03.03.17.mp4", "testFilesFD\\")
 # vids = os.listdir(path + folder)
