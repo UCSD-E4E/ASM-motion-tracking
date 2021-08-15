@@ -18,13 +18,15 @@ def create_mask(init_mask, curr_frame, subtractor, prev_mask=None):
     fg_mask = subtractor.apply(curr_frame)
     img_size = np.shape(curr_frame)[0] * np.shape(curr_frame)[1]
     nonzero = cv2.countNonZero(fg_mask) / img_size
+    old = False
     if nonzero > PERC_NONNOISE_MASK:
         mask = cv2.bitwise_and(fg_mask, init_mask)
     elif not(prev_mask is None):
         mask = prev_mask
+        old = True
     else:
         mask = init_mask
-    return mask
+    return mask, old
 
 
 # create mask using simple subtraction with unhatched eggs as background
@@ -91,8 +93,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
     mask = np.zeros_like(old_gray)
     mask[0:100, 0:600] = 255
     mask = cv2.bitwise_not(mask)
-    fg_mask = create_mask(mask, old_gray, back_sub)
-    # fg_mask = create_mask2(mask, old_frame, unhatched_frame)
+    fg_mask, used = create_mask(mask, old_gray, back_sub)
     p0 = cv2.goodFeaturesToTrack(old_gray, mask=fg_mask, **feature_params)
     pback = p0
     spf = 1/cam.get(cv2.CAP_PROP_FPS)  # seconds per frame
@@ -104,6 +105,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
     last_error = np.inf
     color = np.random.randint(0,255,(100,3))
     cmask = np.zeros_like(old_frame)
+    stale_mask = 0
     # loop over frames
     while 1:
         ret,frame = cam.read()
@@ -146,7 +148,14 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
         try:
             if ret:
                 frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-                fg_mask = create_mask(mask, frame_gray, back_sub, fg_mask)
+                if stale_mask > 10:
+                    fg_mask, used = create_mask(mask, frame_gray, back_sub)
+                else:
+                    fg_mask, used = create_mask(mask, frame_gray, back_sub, fg_mask)
+                if used:
+                    stale_mask += 1
+                else:
+                    stale_mask = 0
                 # calculate optical flow
                 p1, st, err = cv2.calcOpticalFlowPyrLK(old_gray, frame_gray, p0, None, **lk_params)
                 # Select good points
