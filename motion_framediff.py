@@ -6,13 +6,13 @@ import os
 import time
 import matplotlib.pyplot as plt
 
-PERC_NONNOISE_MASK = 0.01
+PERC_NONNOISE_MASK = 0.0005
 PIXEL_DIFF = 0.85  # across 3 frames
 PERC_MVMT = 0.8  # % of detected feature pts with >PIXEL_DIFF movement across 3 frames
 MVMT_FRMS_PER_SEC = 5  # out of 29, base num of frames with significant feature pt differences
 ERR_RANGE = 4  # any supposed mvmt within +- ERR_RANGE seconds from an error is ignored
-FRAME_DIFF_THRESH = 6
-FRAME_DIFF_NUM = 8
+FRAME_DIFF_THRESH = 7
+FRAME_DIFF_NUM = 12
 
 
 # create mask using OpenCV background subtractor
@@ -21,17 +21,24 @@ def create_mask(init_mask, fqueue, prev_mask=None):
     if len(fqueue) > 1:
         for ifr in range(len(fqueue)-1):
             diff_img = cv2.bitwise_or(diff_img, cv2.absdiff(fqueue[ifr], fqueue[ifr+1]))
+    diff_img = cv2.bitwise_and(diff_img, init_mask)
+    plt.imshow(diff_img, cmap="gray")
+    plt.show()
     retval, diff_img = cv2.threshold(diff_img, FRAME_DIFF_THRESH, 255, cv2.THRESH_BINARY)
     img_size = np.shape(diff_img)[0] * np.shape(diff_img)[1]
     nonzero = cv2.countNonZero(diff_img) / img_size
     old = False
+    plt.imshow(diff_img, cmap="gray")
+    plt.show()
     if nonzero > PERC_NONNOISE_MASK:
-        mask = cv2.bitwise_and(diff_img, init_mask)
+        mask = diff_img
     elif not(prev_mask is None):
         mask = prev_mask
         old = True
     else:
         mask = init_mask
+    plt.imshow(mask, cmap="gray")
+    plt.show()
     return mask, old
 
 
@@ -235,7 +242,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 #     print(sys.exc_info())
 path = "C:\\Users\\YUSU\\Documents\\E4E\\"
 folder = "bushmasters\\"
-detect_motion(folder, "2020.06.19-03.03.17.mp4", "testFilesFD\\")
+detect_motion(folder, "2020.06.19-03.03.17.mp4", "testFilesFD\\", visual=False)
 # vids = os.listdir(path + folder)
 # for vid in vids:
 #     detect_motion(folder, vid, "testFiles")

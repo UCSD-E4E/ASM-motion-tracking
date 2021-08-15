@@ -26,6 +26,8 @@ def create_mask(init_mask, curr_frame, subtractor, prev_mask=None):
         old = True
     else:
         mask = init_mask
+    plt.imshow(mask, cmap="gray")
+    plt.show()
     return mask, old
 
 
@@ -138,8 +140,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
                 elif vidtime - q_time >= 4:
                     outf.write(sec_to_min(q_time) + ": hatching over " + q_msg + " frames\n")
                     delayoutq.popleft()
-            else:
-                print(sec_to_min(vidtime))
+            print(sec_to_min(vidtime))
             # get updated features to track
             p0 = cv2.goodFeaturesToTrack(old_gray, mask = fg_mask, **feature_params)
             pback = p0
@@ -236,7 +237,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 #     print(sys.exc_info())
 path = "C:\\Users\\YUSU\\Documents\\E4E\\"
 folder = "bushmasters\\"
-detect_motion(folder, "2020.06.19-02.03.16.mp4", "testFiles\\")
+detect_motion(folder, "2020.06.19-03.03.17.mp4", "testFiles\\")
 # vids = os.listdir(path + folder)
 # for vid in vids:
 #     detect_motion(folder, vid, "testFiles")
