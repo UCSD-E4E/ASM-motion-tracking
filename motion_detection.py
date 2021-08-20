@@ -127,6 +127,8 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
                     delayoutq.append((int(vidtime), False, str(error) + ", line " + str(error[2].tb_lineno)))
                     last_error = int(vidtime)
                 errored = False
+            else:
+                print(sec_to_min(vidtime))
             if write and len(delayoutq) > 0:
                 q_time = delayoutq[0][0]
                 q_mvmt = delayoutq[0][1]
@@ -140,7 +142,6 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
                 elif vidtime - q_time >= 4:
                     outf.write(sec_to_min(q_time) + ": hatching over " + q_msg + " frames\n")
                     delayoutq.popleft()
-            print(sec_to_min(vidtime))
             # get updated features to track
             p0 = cv2.goodFeaturesToTrack(old_gray, mask = fg_mask, **feature_params)
             pback = p0

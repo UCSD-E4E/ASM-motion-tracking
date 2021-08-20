@@ -6,13 +6,14 @@ import os
 import time
 import matplotlib.pyplot as plt
 
-PERC_NONNOISE_MASK = 0.0005
+PERC_NONNOISE_MASK = 0.0002
 PIXEL_DIFF = 0.85  # across 3 frames
 PERC_MVMT = 0.2  # % of detected feature pts with >PIXEL_DIFF movement across 3 frames
-MVMT_FRMS_PER_SEC = 5  # out of 29, base num of frames with significant feature pt differences
+MVMT_FRMS_PER_SEC = 2  # out of 29, base num of frames with significant feature pt differences
 ERR_RANGE = 4  # any supposed mvmt within +- ERR_RANGE seconds from an error is ignored
-FRAME_DIFF_THRESH = 7
-FRAME_DIFF_NUM = 12
+FRAME_DIFF_THRESH = 6
+FRAME_DIFF_NUM = 16
+KERNEL_SIZE = 3  # size of kernel for noise removal
 
 
 # create mask using OpenCV background subtractor
@@ -22,7 +23,14 @@ def create_mask(init_mask, fqueue, prev_mask=None):
         for ifr in range(len(fqueue)-1):
             diff_img = cv2.bitwise_or(diff_img, cv2.absdiff(fqueue[ifr], fqueue[ifr+1]))
     diff_img = cv2.bitwise_and(diff_img, init_mask)
+    # plt.imshow(diff_img, cmap="gray")
+    # plt.show()
     retval, diff_img = cv2.threshold(diff_img, FRAME_DIFF_THRESH, 255, cv2.THRESH_BINARY)
+    # plt.imshow(diff_img, cmap="gray")
+    # plt.show()
+    diff_img = cv2.medianBlur(diff_img, KERNEL_SIZE)
+    # plt.imshow(diff_img, cmap="gray")
+    # plt.show()
     img_size = np.shape(diff_img)[0] * np.shape(diff_img)[1]
     nonzero = cv2.countNonZero(diff_img) / img_size
     old = False
@@ -79,6 +87,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
         outf.write("Pixel intensity value minimum threshold to remain in mask after frame differencing: " +
                    str(FRAME_DIFF_THRESH) + "\n")
         outf.write("Number of consecutive frames to do frame differencing over: " + str(FRAME_DIFF_NUM) + "\n")
+        outf.write("Kernel size for cv noise removal method: " + str(KERNEL_SIZE) + "\n")
         delayoutq = collections.deque()
     # discard first frame, as it doesn't provide a clear image
     ret, old_frame = cam.read()
@@ -89,6 +98,8 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
         q_frame.append(old_gray)
     frame_gray = q_frame[len(q_frame)-1]
     # create base mask to ignore the video timestamp
+    width = frame_gray.shape[1]
+    height = frame_gray.shape[0]
     mask = np.zeros_like(frame_gray)
     mask[0:100, 0:600] = 255
     mask = cv2.bitwise_not(mask)
@@ -124,6 +135,8 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
                     delayoutq.append((int(vidtime), False, str(error) + ", line " + str(error[2].tb_lineno)))
                     last_error = int(vidtime)
                 errored = False
+            else:
+                print(sec_to_min(vidtime))
             if write and len(delayoutq) > 0:
                 q_time = delayoutq[0][0]
                 q_mvmt = delayoutq[0][1]
@@ -137,7 +150,6 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
                 elif vidtime - q_time >= 4:
                     outf.write(sec_to_min(q_time) + ": hatching over " + q_msg + " frames\n")
                     delayoutq.popleft()
-            print(sec_to_min(vidtime))
             # get updated features to track
             p0 = cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params)
             pback = p0
@@ -185,7 +197,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
                         c, d = old.ravel()
                         cmask = cv2.line(cmask, (int(a), int(b)), (int(c), int(d)), color[i].tolist(), 2)
                         frame = cv2.circle(frame, (int(a), int(b)), 5, color[i].tolist(), -1)
-                    img = cv2.add(frame, cmask)
+                    img = cv2.resize(cv2.add(frame, cmask), (int(width/2), int(height/2)))
                     cv2.imshow('frame', img)
                     k = cv2.waitKey(30) & 0xff
                     if k == 27:
@@ -235,7 +247,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 #     print(sys.exc_info())
 path = "C:\\Users\\clair\\Documents\\E4E\\"
 folder = "bushmasters\\"
-detect_motion(folder, "2020.06.19-01.33.16.mp4", "testFilesFD\\", visual=False)
+detect_motion(folder, "2020.06.19-00.33.15.mp4", "testFilesFD\\", visual=False)
 # vids = os.listdir(path + folder)
 # for vid in vids:
 #     detect_motion(folder, vid, "testFiles")
