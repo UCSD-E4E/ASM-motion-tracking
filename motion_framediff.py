@@ -154,6 +154,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
             p0 = cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params)
             pback = p0
             hatching = 0
+            cmask = np.zeros_like(old_frame)
         vidtime = frame_num * spf
         try:
             if ret:

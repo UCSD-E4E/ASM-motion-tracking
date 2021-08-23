@@ -26,8 +26,6 @@ def create_mask(init_mask, curr_frame, subtractor, prev_mask=None):
         old = True
     else:
         mask = init_mask
-    plt.imshow(mask, cmap="gray")
-    plt.show()
     return mask, old
 
 
@@ -118,7 +116,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
             print(hatching)
             # Allows us to ignore artifact-induced mvmt by requiring that mvmt occur across multiple frames
             if hatching >= MVMT_FRMS_PER_SEC and not errored:
-                print(sec_to_min(vidtime) + ": hatching")
+                print(sec_to_min(vidtime) + ": moving")
                 if write:
                     delayoutq.append((int(vidtime), True, str(hatching)))
             elif errored:
@@ -146,6 +144,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
             p0 = cv2.goodFeaturesToTrack(old_gray, mask = fg_mask, **feature_params)
             pback = p0
             hatching = 0
+            cmask = np.zeros_like(old_frame)
         vidtime = frame_num * spf
         try:
             if ret:
@@ -238,7 +237,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 #     print(sys.exc_info())
 path = "C:\\Users\\YUSU\\Documents\\E4E\\"
 folder = "bushmasters\\"
-detect_motion(folder, "2020.06.19-03.03.17.mp4", "testFiles\\")
+detect_motion(folder, "2020.06.18-20.03.13.mp4", "testFiles\\")
 # vids = os.listdir(path + folder)
 # for vid in vids:
 #     detect_motion(folder, vid, "testFiles")
