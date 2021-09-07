@@ -1,0 +1,47 @@
+Proportion of image detected as foreground by background subtraction in order to be determined as not noise and acceptable for use as mask: 0.0002
+Minimum significant feature point movement across 3 frames: 0.85
+Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.1
+Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
+Pixel intensity value minimum threshold to remain in mask after frame differencing: 6
+Number of consecutive frames to do frame differencing over: 16
+Kernel size for cv noise removal method: 5
+0:00: hatching over 10 frames
+1:52: hatching over 10 frames
+4:01: hatching over 11 frames
+13:27: hatching over 10 frames
+18:38: hatching over 11 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D263EC0>), line 206 occurred at time 23:48
+23:49 dropped
+23:50 dropped
+23:51 dropped
+23:52 dropped
+23:53 dropped
+23:54 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D263EC0>), line 206 occurred at time 23:55
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001389D263EC0>), line 174 occurred at time 24:05
+24:06 dropped
+24:07 dropped
+24:08 dropped
+24:09 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D263BC0>), line 206 occurred at time 24:11
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D263D00>), line 206 occurred at time 24:21
+24:23 dropped
+24:24 dropped
+24:25 dropped
+24:26 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D263EC0>), line 206 occurred at time 24:27
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D263EC0>), line 206 occurred at time 24:37
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D263D00>), line 206 occurred at time 24:38
+24:39 dropped
+24:40 dropped
+24:41 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D263D00>), line 206 occurred at time 24:43
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D263D00>), line 206 occurred at time 24:53
+24:54 dropped
+24:55 dropped
+24:56 dropped
+24:58 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D263D00>), line 206 occurred at time 24:59
+25:04: hatching over 14 frames
+Ended at time 29:58
+Runtime: 19.705193666617074 minutes

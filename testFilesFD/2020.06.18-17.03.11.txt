@@ -1,0 +1,38 @@
+Proportion of image detected as foreground by background subtraction in order to be determined as not noise and acceptable for use as mask: 0.0002
+Minimum significant feature point movement across 3 frames: 0.85
+Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.1
+Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
+Pixel intensity value minimum threshold to remain in mask after frame differencing: 6
+Number of consecutive frames to do frame differencing over: 16
+Kernel size for cv noise removal method: 5
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001389D252A00>), line 174 occurred at time 12:57
+12:59 dropped
+13:00 dropped
+13:03 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D25FD00>), line 206 occurred at time 13:04
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001389D252A00>), line 174 occurred at time 13:14
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D252A00>), line 206 occurred at time 13:15
+13:16 dropped
+13:18 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D252A00>), line 206 occurred at time 13:20
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001389A592100>), line 174 occurred at time 13:30
+13:31 dropped
+13:32 dropped
+13:33 dropped
+13:34 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D252A00>), line 206 occurred at time 13:36
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001389A592100>), line 174 occurred at time 13:46
+13:47 dropped
+13:48 dropped
+13:49 dropped
+13:51 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389A592100>), line 206 occurred at time 13:52
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001389D252A00>), line 174 occurred at time 14:02
+14:03 dropped
+14:04 dropped
+14:05 dropped
+14:06 dropped
+14:07 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D25FD00>), line 206 occurred at time 14:08
+Ended at time 29:58
+Runtime: 18.495903321107228 minutes

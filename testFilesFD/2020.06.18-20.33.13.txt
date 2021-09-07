@@ -1,0 +1,11 @@
+Proportion of image detected as foreground by background subtraction in order to be determined as not noise and acceptable for use as mask: 0.0002
+Minimum significant feature point movement across 3 frames: 0.85
+Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.1
+Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
+Pixel intensity value minimum threshold to remain in mask after frame differencing: 6
+Number of consecutive frames to do frame differencing over: 16
+Kernel size for cv noise removal method: 5
+20:46: hatching over 18 frames
+22:54: hatching over 9 frames
+Ended at time 29:58
+Runtime: 19.342161230246226 minutes

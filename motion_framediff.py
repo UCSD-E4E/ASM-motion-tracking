@@ -8,12 +8,12 @@ import matplotlib.pyplot as plt
 
 PERC_NONNOISE_MASK = 0.0002
 PIXEL_DIFF = 0.85  # across 3 frames
-PERC_MVMT = 0.2  # % of detected feature pts with >PIXEL_DIFF movement across 3 frames
-MVMT_FRMS_PER_SEC = 2  # out of 29, base num of frames with significant feature pt differences
+PERC_MVMT = 0.1  # % of detected feature pts with >PIXEL_DIFF movement across 3 frames
+MVMT_FRMS_PER_SEC = 9  # out of 29, base num of frames with significant feature pt differences
 ERR_RANGE = 4  # any supposed mvmt within +- ERR_RANGE seconds from an error is ignored
 FRAME_DIFF_THRESH = 6
 FRAME_DIFF_NUM = 16
-KERNEL_SIZE = 3  # size of kernel for noise removal
+KERNEL_SIZE = 5  # size of kernel for noise removal
 
 
 # create mask using OpenCV background subtractor
@@ -21,11 +21,13 @@ def create_mask(init_mask, fqueue, prev_mask=None):
     diff_img = np.zeros_like(fqueue[0])
     if len(fqueue) > 1:
         for ifr in range(len(fqueue)-1):
-            diff_img = cv2.bitwise_or(diff_img, cv2.absdiff(fqueue[ifr], fqueue[ifr+1]))
+            two_diff = cv2.absdiff(fqueue[ifr], fqueue[ifr+1])
+            retval, two_diff = cv2.threshold(two_diff, FRAME_DIFF_THRESH, 255, cv2.THRESH_BINARY)
+            diff_img = cv2.bitwise_or(diff_img, two_diff)
     diff_img = cv2.bitwise_and(diff_img, init_mask)
     # plt.imshow(diff_img, cmap="gray")
     # plt.show()
-    retval, diff_img = cv2.threshold(diff_img, FRAME_DIFF_THRESH, 255, cv2.THRESH_BINARY)
+    # retval, diff_img = cv2.threshold(diff_img, FRAME_DIFF_THRESH, 255, cv2.THRESH_BINARY)
     # plt.imshow(diff_img, cmap="gray")
     # plt.show()
     diff_img = cv2.medianBlur(diff_img, KERNEL_SIZE)
@@ -122,6 +124,12 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
         frame_num += 1
         # executes if time rolls over to a new second
         if int(frame_num*spf) > vidtime:
+            # mask is only used for finding feature pts at start of sec, so only need to find mask every sec
+            fg_mask, used = create_mask(mask, q_frame)
+            # if vidtime / 60 > 10:
+            #     plt.imshow(fg_mask, cmap="gray")
+            #     plt.show()
+            #     visual = True
             # Check if noticeable mvmt over multiple frames in past second and print time if true
             print(hatching)
             # Allows us to ignore artifact-induced mvmt by requiring that mvmt occur across multiple frames
@@ -161,14 +169,6 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
                 q_frame.popleft()
                 frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
                 q_frame.append(frame_gray)
-                if stale_mask > 10:
-                    fg_mask, used = create_mask(mask, q_frame)
-                else:
-                    fg_mask, used = create_mask(mask, q_frame, fg_mask)
-                if used:
-                    stale_mask += 1
-                else:
-                    stale_mask = 0
                 old_gray = q_frame[len(q_frame)-2]
                 # calculate optical flow
                 p1, st, err = cv2.calcOpticalFlowPyrLK(old_gray, frame_gray, p0, None, **lk_params)
@@ -248,10 +248,10 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 #     print(sys.exc_info())
 path = "C:\\Users\\clair\\Documents\\E4E\\"
 folder = "bushmasters\\"
-detect_motion(folder, "2020.06.19-00.33.15.mp4", "testFilesFD\\", visual=False)
-# vids = os.listdir(path + folder)
-# for vid in vids:
-#     detect_motion(folder, vid, "testFiles")
+# detect_motion(folder, "2020.06.19-00.33.15.mp4", "testFilesFD\\")
+vids = os.listdir(path + folder)
+for vid in vids:
+    detect_motion(folder, vid, "testFilesFD\\")
 # categories = os.listdir(path + folder)
 # for cat in categories:
 #     folder = "Tests\\" + cat + "\\"

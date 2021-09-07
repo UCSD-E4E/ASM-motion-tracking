@@ -1,0 +1,543 @@
+Proportion of image detected as foreground by background subtraction in order to be determined as not noise and acceptable for use as mask: 0.0002
+Minimum significant feature point movement across 3 frames: 0.85
+Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.1
+Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
+Pixel intensity value minimum threshold to remain in mask after frame differencing: 6
+Number of consecutive frames to do frame differencing over: 16
+Kernel size for cv noise removal method: 5
+0:20: hatching over 17 frames
+0:21: hatching over 12 frames
+1:05: hatching over 15 frames
+1:30: hatching over 21 frames
+1:53: hatching over 11 frames
+1:55: hatching over 22 frames
+2:27: hatching over 24 frames
+2:28: hatching over 12 frames
+2:29 dropped
+2:30 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3B6B40>), line 206 occurred at time 2:33
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001389D3B60C0>), line 174 occurred at time 2:43
+2:44 dropped
+2:47 dropped
+2:48 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3B6740>), line 206 occurred at time 2:49
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3B60C0>), line 206 occurred at time 2:59
+3:00 dropped
+3:01 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3B60C0>), line 206 occurred at time 3:05
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001389D3B6240>), line 174 occurred at time 3:15
+3:16 dropped
+3:17 dropped
+3:18 dropped
+3:19 dropped
+3:20 dropped
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x000001389D3B60C0>), line 174 occurred at time 3:21
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3B60C0>), line 206 occurred at time 3:31
+3:32 dropped
+3:33 dropped
+3:34 dropped
+3:35 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3B60C0>), line 206 occurred at time 3:36
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3B6740>), line 206 occurred at time 3:37
+4:01: hatching over 21 frames
+4:05: hatching over 30 frames
+4:06: hatching over 15 frames
+4:14: hatching over 29 frames
+4:15: hatching over 30 frames
+4:16: hatching over 16 frames
+4:17: hatching over 29 frames
+4:18: hatching over 24 frames
+4:19: hatching over 28 frames
+4:20: hatching over 22 frames
+4:22: hatching over 30 frames
+4:23: hatching over 19 frames
+4:24: hatching over 29 frames
+4:25: hatching over 30 frames
+4:26: hatching over 30 frames
+4:27: hatching over 27 frames
+4:28: hatching over 19 frames
+4:29: hatching over 26 frames
+4:30: hatching over 19 frames
+4:31: hatching over 9 frames
+4:32: hatching over 11 frames
+4:35: hatching over 30 frames
+4:36: hatching over 30 frames
+4:37: hatching over 30 frames
+4:38: hatching over 24 frames
+4:39: hatching over 29 frames
+4:40: hatching over 30 frames
+4:41: hatching over 30 frames
+4:42: hatching over 30 frames
+4:43: hatching over 29 frames
+4:44: hatching over 28 frames
+4:46: hatching over 30 frames
+4:47: hatching over 30 frames
+4:48: hatching over 30 frames
+4:49: hatching over 24 frames
+4:50: hatching over 12 frames
+4:51: hatching over 28 frames
+4:52: hatching over 30 frames
+4:53: hatching over 28 frames
+4:54: hatching over 30 frames
+4:55: hatching over 17 frames
+4:56: hatching over 30 frames
+4:57: hatching over 28 frames
+4:59: hatching over 15 frames
+5:01: hatching over 18 frames
+5:04: hatching over 27 frames
+5:05: hatching over 19 frames
+5:06: hatching over 28 frames
+5:07: hatching over 26 frames
+5:08: hatching over 30 frames
+5:09: hatching over 30 frames
+5:10: hatching over 16 frames
+5:11: hatching over 18 frames
+5:14: hatching over 29 frames
+5:16: hatching over 30 frames
+5:17: hatching over 30 frames
+5:18: hatching over 20 frames
+5:19: hatching over 27 frames
+5:20: hatching over 12 frames
+5:21: hatching over 9 frames
+5:22: hatching over 18 frames
+5:24: hatching over 23 frames
+5:29: hatching over 30 frames
+5:31: hatching over 30 frames
+5:32: hatching over 27 frames
+5:33: hatching over 24 frames
+5:34: hatching over 22 frames
+5:35: hatching over 18 frames
+5:36: hatching over 30 frames
+5:37: hatching over 30 frames
+5:38: hatching over 29 frames
+5:39: hatching over 21 frames
+5:40: hatching over 16 frames
+5:41: hatching over 30 frames
+5:42: hatching over 30 frames
+5:43: hatching over 28 frames
+5:44: hatching over 29 frames
+5:45: hatching over 16 frames
+5:46: hatching over 30 frames
+5:47: hatching over 30 frames
+5:48: hatching over 11 frames
+5:49: hatching over 21 frames
+5:51: hatching over 30 frames
+5:52: hatching over 30 frames
+5:53: hatching over 11 frames
+5:54: hatching over 30 frames
+5:55: hatching over 15 frames
+5:56: hatching over 26 frames
+5:59: hatching over 28 frames
+6:00: hatching over 29 frames
+6:01: hatching over 27 frames
+6:02: hatching over 30 frames
+6:03: hatching over 30 frames
+6:04: hatching over 26 frames
+6:05: hatching over 26 frames
+6:06: hatching over 30 frames
+6:07: hatching over 29 frames
+6:08: hatching over 25 frames
+6:09: hatching over 29 frames
+6:10: hatching over 18 frames
+6:11: hatching over 30 frames
+6:12: hatching over 27 frames
+6:13: hatching over 14 frames
+6:14: hatching over 25 frames
+6:16: hatching over 30 frames
+6:17: hatching over 30 frames
+6:19: hatching over 30 frames
+6:20: hatching over 13 frames
+6:21: hatching over 30 frames
+6:22: hatching over 30 frames
+6:23: hatching over 9 frames
+6:24: hatching over 30 frames
+6:25: hatching over 30 frames
+6:26: hatching over 29 frames
+6:27: hatching over 30 frames
+6:29: hatching over 29 frames
+6:31: hatching over 30 frames
+6:32: hatching over 29 frames
+6:34: hatching over 10 frames
+6:36: hatching over 19 frames
+6:37: hatching over 30 frames
+6:38: hatching over 30 frames
+6:39: hatching over 30 frames
+6:40: hatching over 20 frames
+6:41: hatching over 30 frames
+6:42: hatching over 28 frames
+6:43: hatching over 16 frames
+6:44: hatching over 30 frames
+6:45: hatching over 30 frames
+6:46: hatching over 30 frames
+6:48: hatching over 17 frames
+6:49: hatching over 30 frames
+6:51: hatching over 30 frames
+6:52: hatching over 30 frames
+6:54: hatching over 11 frames
+6:55: hatching over 21 frames
+6:56: hatching over 30 frames
+6:57: hatching over 29 frames
+6:59: hatching over 30 frames
+7:00: hatching over 23 frames
+7:01: hatching over 29 frames
+7:02: hatching over 30 frames
+7:04: hatching over 30 frames
+7:05: hatching over 25 frames
+7:06: hatching over 23 frames
+7:07: hatching over 30 frames
+7:08: hatching over 29 frames
+7:09: hatching over 29 frames
+7:10: hatching over 22 frames
+7:11: hatching over 30 frames
+7:12: hatching over 30 frames
+7:13: hatching over 30 frames
+7:14: hatching over 29 frames
+7:15: hatching over 10 frames
+7:16: hatching over 30 frames
+7:17: hatching over 29 frames
+7:18: hatching over 30 frames
+7:19: hatching over 30 frames
+7:20: hatching over 28 frames
+7:21: hatching over 30 frames
+7:22: hatching over 26 frames
+7:23: hatching over 30 frames
+7:24: hatching over 30 frames
+7:26: hatching over 9 frames
+7:27: hatching over 22 frames
+7:28: hatching over 14 frames
+7:29: hatching over 30 frames
+7:30: hatching over 30 frames
+7:31: hatching over 29 frames
+7:32: hatching over 30 frames
+7:33: hatching over 30 frames
+7:34: hatching over 30 frames
+7:36: hatching over 30 frames
+7:37: hatching over 30 frames
+7:38: hatching over 30 frames
+7:39: hatching over 30 frames
+7:40: hatching over 18 frames
+7:41: hatching over 29 frames
+7:42: hatching over 21 frames
+7:43: hatching over 27 frames
+7:44: hatching over 30 frames
+7:45: hatching over 9 frames
+7:46: hatching over 26 frames
+7:47: hatching over 25 frames
+7:51: hatching over 30 frames
+7:52: hatching over 29 frames
+7:53: hatching over 30 frames
+7:54: hatching over 30 frames
+7:56: hatching over 17 frames
+7:57: hatching over 30 frames
+7:58: hatching over 28 frames
+7:59: hatching over 28 frames
+8:00: hatching over 27 frames
+8:01: hatching over 25 frames
+8:02: hatching over 29 frames
+8:03: hatching over 30 frames
+8:04: hatching over 30 frames
+8:05: hatching over 30 frames
+8:06: hatching over 30 frames
+8:07: hatching over 30 frames
+8:08: hatching over 30 frames
+8:09: hatching over 30 frames
+8:10: hatching over 29 frames
+8:11: hatching over 22 frames
+8:12: hatching over 24 frames
+8:14: hatching over 29 frames
+8:15: hatching over 21 frames
+8:16: hatching over 28 frames
+8:17: hatching over 29 frames
+8:18: hatching over 29 frames
+8:19: hatching over 30 frames
+8:21: hatching over 30 frames
+8:22: hatching over 30 frames
+8:23: hatching over 25 frames
+8:24: hatching over 23 frames
+8:26: hatching over 30 frames
+8:27: hatching over 30 frames
+8:28: hatching over 28 frames
+8:29: hatching over 30 frames
+8:30: hatching over 29 frames
+8:31: hatching over 30 frames
+8:32: hatching over 28 frames
+8:33: hatching over 18 frames
+8:34: hatching over 14 frames
+8:36: hatching over 21 frames
+8:37: hatching over 24 frames
+8:38: hatching over 30 frames
+8:39: hatching over 30 frames
+8:41: hatching over 23 frames
+8:42: hatching over 30 frames
+8:43: hatching over 28 frames
+8:44: hatching over 18 frames
+8:45: hatching over 30 frames
+8:46: hatching over 30 frames
+8:47: hatching over 30 frames
+8:48: hatching over 30 frames
+8:49: hatching over 27 frames
+8:51: hatching over 29 frames
+8:52: hatching over 30 frames
+8:53: hatching over 30 frames
+8:54: hatching over 30 frames
+8:56: hatching over 30 frames
+8:57: hatching over 15 frames
+8:58: hatching over 23 frames
+8:59: hatching over 29 frames
+9:01: hatching over 9 frames
+9:03: hatching over 30 frames
+9:04: hatching over 30 frames
+9:05: hatching over 24 frames
+9:06: hatching over 28 frames
+9:07: hatching over 10 frames
+9:09: hatching over 22 frames
+9:11: hatching over 30 frames
+9:12: hatching over 30 frames
+9:13: hatching over 30 frames
+9:14: hatching over 28 frames
+9:15: hatching over 23 frames
+9:16: hatching over 23 frames
+9:17: hatching over 30 frames
+9:18: hatching over 22 frames
+9:19: hatching over 29 frames
+9:21: hatching over 30 frames
+9:23: hatching over 30 frames
+9:24: hatching over 30 frames
+9:25: hatching over 30 frames
+9:26: hatching over 29 frames
+9:27: hatching over 10 frames
+9:28: hatching over 17 frames
+9:29: hatching over 30 frames
+9:30: hatching over 30 frames
+9:31: hatching over 29 frames
+9:33: hatching over 25 frames
+9:34: hatching over 28 frames
+9:35: hatching over 30 frames
+9:36: hatching over 30 frames
+9:37: hatching over 27 frames
+9:38: hatching over 29 frames
+9:39: hatching over 30 frames
+9:40: hatching over 23 frames
+9:41: hatching over 28 frames
+9:42: hatching over 30 frames
+9:43: hatching over 30 frames
+9:44: hatching over 30 frames
+9:46: hatching over 30 frames
+9:47: hatching over 12 frames
+9:48: hatching over 30 frames
+9:49: hatching over 28 frames
+9:50: hatching over 26 frames
+9:51: hatching over 21 frames
+9:53: hatching over 30 frames
+9:54: hatching over 30 frames
+9:55: hatching over 28 frames
+9:56: hatching over 30 frames
+9:57: hatching over 30 frames
+9:58: hatching over 30 frames
+9:59: hatching over 30 frames
+10:00: hatching over 25 frames
+10:01: hatching over 29 frames
+10:02: hatching over 28 frames
+10:03: hatching over 30 frames
+10:04: hatching over 30 frames
+10:05: hatching over 30 frames
+10:06: hatching over 28 frames
+10:07: hatching over 30 frames
+10:08: hatching over 30 frames
+10:09: hatching over 30 frames
+10:10: hatching over 30 frames
+10:11: hatching over 30 frames
+10:13: hatching over 22 frames
+10:16: hatching over 10 frames
+10:18: hatching over 23 frames
+10:21: hatching over 16 frames
+10:24: hatching over 24 frames
+10:28: hatching over 30 frames
+10:33: hatching over 9 frames
+10:34: hatching over 17 frames
+10:36: hatching over 30 frames
+10:37: hatching over 30 frames
+10:38: hatching over 29 frames
+10:41: hatching over 23 frames
+10:43: hatching over 19 frames
+10:48: hatching over 22 frames
+10:49: hatching over 30 frames
+10:50: hatching over 23 frames
+10:51: hatching over 24 frames
+10:53: hatching over 20 frames
+10:54: hatching over 24 frames
+10:55: hatching over 21 frames
+10:58: hatching over 19 frames
+11:33: hatching over 20 frames
+11:34: hatching over 19 frames
+11:39: hatching over 28 frames
+11:41: hatching over 23 frames
+11:46: hatching over 16 frames
+11:48: hatching over 28 frames
+11:49: hatching over 28 frames
+11:50: hatching over 24 frames
+11:51: hatching over 29 frames
+11:54: hatching over 27 frames
+11:55: hatching over 20 frames
+11:58: hatching over 28 frames
+11:59: hatching over 26 frames
+12:00: hatching over 26 frames
+12:01: hatching over 16 frames
+12:24: hatching over 23 frames
+12:30: hatching over 23 frames
+12:31: hatching over 30 frames
+12:35: hatching over 9 frames
+12:38: hatching over 29 frames
+12:39: hatching over 23 frames
+12:40: hatching over 29 frames
+12:41: hatching over 19 frames
+12:42: hatching over 25 frames
+12:43: hatching over 30 frames
+12:44: hatching over 29 frames
+12:45: hatching over 18 frames
+12:46: hatching over 9 frames
+12:50: hatching over 24 frames
+12:51: hatching over 30 frames
+12:52: hatching over 29 frames
+12:53: hatching over 29 frames
+12:54: hatching over 27 frames
+12:55: hatching over 28 frames
+12:56: hatching over 27 frames
+14:45: hatching over 14 frames
+14:49: hatching over 16 frames
+14:53: hatching over 11 frames
+14:55: hatching over 24 frames
+14:59: hatching over 17 frames
+15:00: hatching over 15 frames
+15:01: hatching over 15 frames
+15:55: hatching over 19 frames
+16:46: hatching over 25 frames
+16:48: hatching over 9 frames
+16:56: hatching over 22 frames
+17:03: hatching over 10 frames
+17:16 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3DCB40>), line 206 occurred at time 17:18
+17:40: hatching over 27 frames
+17:41: hatching over 17 frames
+17:43: hatching over 17 frames
+17:45 dropped
+17:46 dropped
+17:47 dropped
+17:48 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3DC880>), line 206 occurred at time 17:49
+17:50 dropped
+17:55: hatching over 23 frames
+17:56: hatching over 24 frames
+18:00: hatching over 30 frames
+18:01: hatching over 30 frames
+18:02: hatching over 14 frames
+18:05: hatching over 16 frames
+18:06: hatching over 30 frames
+18:07: hatching over 30 frames
+18:08: hatching over 30 frames
+18:09: hatching over 19 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3B6740>), line 206 occurred at time 18:16
+18:17 dropped
+18:19 dropped
+18:20 dropped
+18:21 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3DCB40>), line 206 occurred at time 18:23
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3DCB40>), line 206 occurred at time 18:24
+18:26 dropped
+18:27 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3DCB40>), line 206 occurred at time 18:28
+18:29 dropped
+24:48 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3CA900>), line 206 occurred at time 24:49
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3CA840>), line 206 occurred at time 24:50
+24:52 dropped
+24:53 dropped
+24:55: hatching over 23 frames
+24:56: hatching over 22 frames
+24:57: hatching over 30 frames
+24:58: hatching over 21 frames
+25:02: hatching over 30 frames
+25:03: hatching over 26 frames
+25:04: hatching over 23 frames
+25:07: hatching over 30 frames
+25:08: hatching over 30 frames
+25:09: hatching over 10 frames
+25:12: hatching over 19 frames
+25:13: hatching over 13 frames
+25:14: hatching over 17 frames
+25:16: hatching over 16 frames
+25:17: hatching over 28 frames
+25:19: hatching over 16 frames
+25:20: hatching over 22 frames
+25:21: hatching over 14 frames
+25:23: hatching over 13 frames
+25:24: hatching over 24 frames
+25:27: hatching over 27 frames
+25:28: hatching over 30 frames
+25:30: hatching over 28 frames
+25:31: hatching over 23 frames
+25:33: hatching over 25 frames
+25:35: hatching over 30 frames
+25:37: hatching over 30 frames
+25:40: hatching over 17 frames
+25:41: hatching over 28 frames
+25:42: hatching over 23 frames
+25:43: hatching over 30 frames
+25:44: hatching over 29 frames
+25:45: hatching over 30 frames
+25:46: hatching over 17 frames
+25:48: hatching over 29 frames
+25:49: hatching over 29 frames
+25:50: hatching over 30 frames
+25:51: hatching over 30 frames
+25:52: hatching over 29 frames
+25:53: hatching over 30 frames
+25:54: hatching over 27 frames
+25:55: hatching over 17 frames
+25:56: hatching over 29 frames
+25:57: hatching over 27 frames
+25:58: hatching over 30 frames
+25:59: hatching over 30 frames
+26:00: hatching over 30 frames
+26:01: hatching over 30 frames
+26:02: hatching over 30 frames
+26:03: hatching over 30 frames
+26:04: hatching over 30 frames
+26:05: hatching over 29 frames
+26:06: hatching over 30 frames
+26:07: hatching over 14 frames
+26:09: hatching over 29 frames
+26:10: hatching over 27 frames
+26:11 dropped
+26:12 dropped
+26:13 dropped
+26:14 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3CA480>), line 206 occurred at time 26:15
+26:16 dropped
+26:17 dropped
+26:18 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3CAAC0>), line 206 occurred at time 26:19
+26:23 dropped
+26:24: hatching over 22 frames
+26:25: hatching over 22 frames
+26:26: hatching over 16 frames
+26:27: hatching over 15 frames
+26:32: hatching over 22 frames
+26:33: hatching over 11 frames
+26:48: hatching over 10 frames
+26:49: hatching over 21 frames
+26:51 dropped
+26:53 dropped
+26:54 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3CA840>), line 206 occurred at time 26:55
+26:56 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x000001389D3CA840>), line 206 occurred at time 26:57
+26:58 dropped
+26:59 dropped
+27:01 dropped
+27:07: hatching over 9 frames
+27:11: hatching over 16 frames
+27:17: hatching over 11 frames
+27:45: hatching over 16 frames
+Ended at time 29:58
+Runtime: 19.723426147301993 minutes
