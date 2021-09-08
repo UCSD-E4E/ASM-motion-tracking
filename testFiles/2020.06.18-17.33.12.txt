@@ -3,4 +3,4 @@ Minimum significant feature point movement across 3 frames: 0.85
 Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: 0.15
 Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
 Ended at time 29:59
-Runtime: 35.93510725498199 minutes
+Runtime: 37.19300262928009 minutes

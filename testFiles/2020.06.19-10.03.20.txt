@@ -752,7 +752,7 @@ Minimum num frames in a sec with significant movement to return that movement ha
 27:36: hatching over 30 frames
 27:37: hatching over 28 frames
 27:38: hatching over 29 frames
-27:39: hatching over 10 frames
+27:39: hatching over 11 frames
 27:41: hatching over 26 frames
 27:42: hatching over 28 frames
 27:43: hatching over 29 frames
@@ -818,4 +818,4 @@ Minimum num frames in a sec with significant movement to return that movement ha
 29:51: hatching over 20 frames
 29:52: hatching over 24 frames
 Ended at time 29:59
-Runtime: 35.26537431081136 minutes
+Runtime: 35.84229667981466 minutes

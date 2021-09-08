@@ -4,6 +4,7 @@ Minimum proportion of feature points with significant movement in a particular f
 Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
 0:38: hatching over 10 frames
 0:39: hatching over 9 frames
+0:46: hatching over 23 frames
 0:48: hatching over 21 frames
 0:49: hatching over 25 frames
 0:51: hatching over 11 frames
@@ -423,50 +424,50 @@ Minimum num frames in a sec with significant movement to return that movement ha
 12:43: hatching over 23 frames
 12:45: hatching over 18 frames
 12:46: hatching over 25 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x00000209800706C0>), line 164 occurred at time 12:59
-13:00: hatching over 18 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070740>), line 164 occurred at time 13:06
-13:07: hatching over 14 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070740>), line 164 occurred at time 13:22
-13:25: hatching over 23 frames
-13:26: hatching over 12 frames
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000016D80001700>), line 176 occurred at time 12:59
+13:00 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000016D80001480>), line 176 occurred at time 13:06
+13:07 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000016D80001480>), line 176 occurred at time 13:22
+13:25 dropped
+13:26 dropped
 13:27: hatching over 23 frames
 13:28: hatching over 29 frames
-13:29: hatching over 30 frames
-13:30: hatching over 30 frames
-13:31: hatching over 30 frames
-13:32: hatching over 30 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070740>), line 164 occurred at time 13:33
-13:34: hatching over 15 frames
-13:35: hatching over 9 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070740>), line 164 occurred at time 13:38
-13:40: hatching over 30 frames
-13:41: hatching over 30 frames
-13:42: hatching over 30 frames
+13:29 dropped
+13:30 dropped
+13:31 dropped
+13:32 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000016D80001480>), line 176 occurred at time 13:33
+13:34 dropped
+13:35 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000016D80001480>), line 176 occurred at time 13:38
+13:40 dropped
+13:41 dropped
+13:42 dropped
 13:43: hatching over 30 frames
 13:44: hatching over 30 frames
-13:45: hatching over 29 frames
-13:46: hatching over 29 frames
-13:47: hatching over 29 frames
-13:48: hatching over 30 frames
-(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x0000020980070740>), line 132 occurred at time 13:49
-13:50: hatching over 12 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070740>), line 164 occurred at time 13:54
-13:57: hatching over 9 frames
-13:58: hatching over 24 frames
+13:45 dropped
+13:46 dropped
+13:47 dropped
+13:48 dropped
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x0000016D80001480>), line 147 occurred at time 13:49
+13:50 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000016D80001480>), line 176 occurred at time 13:54
+13:57 dropped
+13:58 dropped
 13:59: hatching over 22 frames
-14:00: hatching over 29 frames
-14:01: hatching over 27 frames
-14:02: hatching over 26 frames
-14:03: hatching over 30 frames
-(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x0000020980070A00>), line 132 occurred at time 14:04
-14:05: hatching over 11 frames
-14:06: hatching over 17 frames
-14:07: hatching over 11 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980070D80>), line 164 occurred at time 14:10
-14:12: hatching over 29 frames
-14:13: hatching over 30 frames
-14:14: hatching over 30 frames
+14:00 dropped
+14:01 dropped
+14:02 dropped
+14:03 dropped
+(<class 'cv2.error'>, error("OpenCV(4.0.1) C:\\ci\\opencv-suite_1573470242804\\work\\modules\\video\\src\\lkpyramid.cpp:1229: error: (-215:Assertion failed) (npoints = prevPtsMat.checkVector(2, CV_32F, true)) >= 0 in function 'cv::`anonymous-namespace'::SparsePyrLKOpticalFlowImpl::calc'\n"), <traceback object at 0x0000016D80001700>), line 147 occurred at time 14:04
+14:05 dropped
+14:06 dropped
+14:07 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000016D80001280>), line 176 occurred at time 14:10
+14:12 dropped
+14:13 dropped
+14:14 dropped
 14:15: hatching over 30 frames
 14:16: hatching over 30 frames
 14:17: hatching over 30 frames
@@ -1106,4 +1107,4 @@ Minimum num frames in a sec with significant movement to return that movement ha
 29:53: hatching over 18 frames
 29:54: hatching over 29 frames
 Ended at time 29:59
-Runtime: 35.52525834639867 minutes
+Runtime: 36.48460810979207 minutes

@@ -4,4 +4,4 @@ Minimum proportion of feature points with significant movement in a particular f
 Minimum num frames in a sec with significant movement to return that movement has occurred at that time: 9
 11:18: hatching over 14 frames
 Ended at time 29:59
-Runtime: 33.3030334909757 minutes
+Runtime: 33.63794955809911 minutes

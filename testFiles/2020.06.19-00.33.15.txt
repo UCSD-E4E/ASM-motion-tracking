@@ -5,4 +5,4 @@ Minimum num frames in a sec with significant movement to return that movement ha
 6:20: hatching over 10 frames
 26:45: hatching over 9 frames
 Ended at time 29:59
-Runtime: 33.279033839702606 minutes
+Runtime: 33.9748959740003 minutes

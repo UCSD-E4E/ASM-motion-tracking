@@ -217,11 +217,11 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 # except:
 #     print(sys.exc_info())
 path = "C:\\Users\\clair\\Documents\\E4E\\"
-folder = "bushmastersTrim\\"
-detect_motion(path + folder, "2020.06.19-01.33.16_Trim2.mp4", path + "testFiles\\")
-# vids = os.listdir(path + folder)
-# for vid in vids:
-#     detect_motion(folder, vid, "testFiles")
+folder = "bushmasters\\"
+# detect_motion(path + folder, "2020.06.19-01.33.16_Trim2.mp4", path + "testFiles\\")
+vids = os.listdir(path + folder)
+for vid in vids:
+    detect_motion(path + folder, vid, path + "ASM-motion-tracking\\testFiles\\")
 # categories = os.listdir(path + folder)
 # for cat in categories:
 #     folder = "Tests\\" + cat + "\\"

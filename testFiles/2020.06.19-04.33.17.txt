@@ -337,11 +337,11 @@ Minimum num frames in a sec with significant movement to return that movement ha
 15:41: hatching over 26 frames
 15:42: hatching over 19 frames
 15:43: hatching over 18 frames
-15:48: hatching over 30 frames
-15:49: hatching over 30 frames
-15:51: hatching over 30 frames
-(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000020980049280>), line 164 occurred at time 15:52
-15:56: hatching over 30 frames
+15:48 dropped
+15:49 dropped
+15:51 dropped
+(<class 'ZeroDivisionError'>, ZeroDivisionError('float division by zero'), <traceback object at 0x0000016D9BAC6F40>), line 176 occurred at time 15:52
+15:56 dropped
 15:57: hatching over 29 frames
 15:58: hatching over 30 frames
 15:59: hatching over 29 frames
@@ -455,4 +455,4 @@ Minimum num frames in a sec with significant movement to return that movement ha
 29:14: hatching over 30 frames
 29:15: hatching over 16 frames
 Ended at time 29:59
-Runtime: 34.451687101523085 minutes
+Runtime: 35.316610872745514 minutes
