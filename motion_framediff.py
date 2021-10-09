@@ -4,6 +4,7 @@ import cv2
 import sys
 import os
 import time
+from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 
 PERC_NONNOISE_MASK = 0.0002
@@ -53,26 +54,31 @@ def create_mask(init_mask, fqueue, prev_mask=None):
     return mask, old
 
 
-def sec_to_min(time):
+def sec_to_min(time, starttime=None):
+    timestamp = ""
+    if starttime is not None:
+        timestamp = starttime + timedelta(seconds=time)
+        ms = timestamp.microsecond
+        timestamp = " [" + datetime.isoformat(timestamp-timedelta(microseconds=ms)) + "]"
     seconds = str(int(time % 60))
     if time % 60 < 10:
         seconds = "0" + seconds
-    return str(int(time / 60)) + ":" + seconds
+    return str(int(time / 60)) + ":" + seconds + timestamp
 
 
-def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
+def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False, timename=False):
     start_time = time.time()
     # get path to video
     cam = cv2.VideoCapture(vidfolder + name)
     # params for ShiTomasi corner detection
-    feature_params = dict( maxCorners = 100,
-                           qualityLevel = 0.01,
-                           minDistance = 7,
-                           blockSize = 7 )
+    feature_params = dict(maxCorners=100,
+                           qualityLevel=0.01,
+                           minDistance=7,
+                           blockSize=7)
     # Parameters for lucas kanade optical flow
-    lk_params = dict( winSize  = (15,15),
-                      maxLevel = 2,
-                      criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
+    lk_params = dict(winSize=(15,15),
+                      maxLevel=2,
+                      criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
     if write:
         if txtfolder is not None:
             filepath = txtfolder
@@ -107,14 +113,19 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
     fg_mask, used = create_mask(mask, q_frame)
     p0 = cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params)
     pback = p0
+    pmove = np.zeros(p0.shape[0])
     spf = 1/cam.get(cv2.CAP_PROP_FPS)  # seconds per frame
     frame_num = 1 + FRAME_DIFF_NUM
+    real_start = None
+    if timename:
+        real_start = datetime(int(name[0:4]), int(name[5:7]), int(name[8:10]), int(name[11:13]), int(name[14:16]),
+                              int(name[17:19]))
     vidtime = 0.0
     hatching = 0
     errored = False
     error = ""
     last_error = np.inf
-    color = np.random.randint(0,255,(100,3))
+    color = np.random.randint(0,255,(pmove.shape[0],3))
     cmask = np.zeros_like(old_frame)
     stale_mask = 0
     # loop over frames
@@ -134,40 +145,50 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
             # Allows us to ignore artifact-induced mvmt by requiring that mvmt occur across multiple frames
             if hatching >= MVMT_FRMS_PER_SEC and not errored:
                 # Occurs if sufficient movement detected during second
-                print(sec_to_min(vidtime) + ": hatching")
+                print(sec_to_min(vidtime, real_start) + ": hatching")
                 if write:
                     delayoutq.append((int(vidtime), True, str(hatching)))
             elif errored:
                 # Occurs if error detected during second
-                print(str(error) + ", line " + str(error[2].tb_lineno) + " occurred at time " + sec_to_min(vidtime))
+                print(str(error) + ", line " + str(error[2].tb_lineno) + " occurred at time "
+                      + sec_to_min(vidtime, real_start))
                 if write:
                     delayoutq.append((int(vidtime), False, str(error) + ", line " + str(error[2].tb_lineno)))
                     last_error = int(vidtime)
                 errored = False
             else:
                 # Occurs if nothing significant happened during second
-                print(sec_to_min(vidtime))
+                print(sec_to_min(vidtime, real_start))
             if write and len(delayoutq) > 0:
                 q_time = delayoutq[0][0]
                 q_mvmt = delayoutq[0][1]
                 q_msg = delayoutq[0][2]
                 if q_mvmt is False:
                     # Error output written
-                    outf.write(q_msg + " occurred at time " + sec_to_min(q_time) + "\n")
+                    outf.write(q_msg + " occurred at time " + sec_to_min(q_time, real_start) + "\n")
                     delayoutq.popleft()
                 elif abs(q_time - last_error) <= 4:
                     # Movement-within-ERR_RANGE-seconds-to-an-error output written
-                    outf.write(sec_to_min(q_time) + " dropped\n")
+                    outf.write(sec_to_min(q_time, real_start) + " dropped\n")
                     delayoutq.popleft()
                 elif vidtime - q_time >= 4:
                     # Movement output written
-                    outf.write(sec_to_min(q_time) + ": hatching over " + q_msg + " frames\n")
+                    outf.write(sec_to_min(q_time, real_start) + ": hatching over " + q_msg + " frames\n")
                     delayoutq.popleft()
             # get updated features to track
-            p0 = cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params)
+            if p0 is None:
+                p0 = cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params)
+                if p0 is None:
+                    vidtime = frame_num * spf
+                    continue
+            else:
+                p0 = p0[pmove > MVMT_FRMS_PER_SEC]
+                p0 = np.append(p0, cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params), axis=0)
             pback = p0
+            pmove = np.zeros(p0.shape[0])
             hatching = 0
             cmask = np.zeros_like(old_frame)
+            color = np.random.randint(0,255,(pmove.shape[0],3))
         vidtime = frame_num * spf
         try:
             if ret:
@@ -182,9 +203,11 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
                     good_new = p1[st==1]
                     good_old = p0[st==1]
                     good_back = pback[st==1]
+                    st = st.flatten()
+                    pmove = pmove[st==1]
                 # Compare points to detect motion
                 move_points = 0.0
-                for (new,old,back) in zip(good_new, good_old, good_back):
+                for i, (new,old,back) in enumerate(zip(good_new, good_old, good_back)):
                     a,b = new.ravel()
                     c,d = old.ravel()
                     e,f = back.ravel()
@@ -192,6 +215,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
                     dist = ((a-e)**2 + (b-f)**2)**0.5
                     if dist >= PIXEL_DIFF:
                         move_points += 1
+                        pmove[i] += 1
                 # This section of code used to visualize feature points and tracked mvmt
                 if visual:
                     for i, (new, old) in enumerate(zip(good_new, good_old)):
@@ -219,7 +243,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
             error = sys.exc_info()
             p0 = cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params)
             pback = p0
-    print("ended properly? at time " + sec_to_min(vidtime))
+    print("ended properly? at time " + sec_to_min(vidtime, real_start))
     # Finish writing what's left in the queue
     if write:
         while len(delayoutq) > 0:
@@ -227,13 +251,13 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
             q_mvmt = delayoutq[0][1]
             q_msg = delayoutq[0][2]
             if q_mvmt is False:
-                outf.write(q_msg + " occurred at time " + sec_to_min(q_time) + "\n")
+                outf.write(q_msg + " occurred at time " + sec_to_min(q_time, real_start) + "\n")
             elif abs(q_time - last_error) <= 4:
-                outf.write(sec_to_min(q_time) + " dropped\n")
+                outf.write(sec_to_min(q_time, real_start) + " dropped\n")
             else:
-                outf.write(sec_to_min(q_time) + ": hatching over " + q_msg + " frames\n")
+                outf.write(sec_to_min(q_time, real_start) + ": hatching over " + q_msg + " frames\n")
             delayoutq.popleft()
-        outf.write("Ended at time " + sec_to_min(vidtime) + "\n")
+        outf.write("Ended at time " + sec_to_min(vidtime, real_start) + "\n")
         runsec = time.time() - start_time
         runmin = runsec / 60.0
         outf.write("Runtime: " + str(runmin) + " minutes\n")
@@ -248,7 +272,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 #     print(sys.exc_info())
 path = "C:\\Users\\clair\\Documents\\E4E\\"
 folder = "bushmasters\\"
-detect_motion(path + folder, "2020.06.19-00.33.15.mp4", path + "testFilesFD\\")
+detect_motion(path + folder, "2020.06.19-02.03.16.mp4", path + "testFilesFD\\", timename=True)
 # vids = os.listdir(path + folder)
 # for vid in vids:
 #     detect_motion(path + folder, vid, path + "testFilesFD\\")
