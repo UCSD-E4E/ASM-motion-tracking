@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 PERC_NONNOISE_MASK = 0.0005
 PERC_NONNOISE_MASK_MSG = "Proportion of image detected as foreground by background subtraction in order to be " \
                          "determined as not noise and acceptable for use as mask: "
-PIXEL_DIFF = 0.85  # across 3 frames
+PIXEL_DIFF = 1.85  # across 3 frames
 PIXEL_DIFF_MSG = "Minimum significant feature point movement across 3 frames: "
 PERC_MVMT = 0.15  # % of detected feature pts with >PIXEL_DIFF movement across 3 frames
 PERC_MVMT_MSG = "Minimum proportion of feature points with significant movement in a particular frame to qualify as " \
@@ -217,11 +217,11 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False):
 # except:
 #     print(sys.exc_info())
 path = "C:\\Users\\clair\\Documents\\E4E\\"
-folder = "bushmasters\\"
-# detect_motion(path + folder, "2020.06.19-01.33.16_Trim2.mp4", path + "testFiles\\")
-vids = os.listdir(path + folder)
-for vid in vids:
-    detect_motion(path + folder, vid, path + "ASM-motion-tracking\\testFiles\\")
+folder = "emptyBox\\"
+detect_motion(path + folder, "2021.10.10.11.33.03.mp4", path + "testBox\\", visual=True)
+# vids = os.listdir(path + folder)
+# for vid in vids:
+#     detect_motion(path + folder, vid, path + "ASM-motion-tracking\\testFiles\\")
 # categories = os.listdir(path + folder)
 # for cat in categories:
 #     folder = "Tests\\" + cat + "\\"

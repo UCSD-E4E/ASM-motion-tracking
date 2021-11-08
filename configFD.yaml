@@ -1,0 +1,41 @@
+---
+  # Range of pixels in x dim that has consistent irrelevant motion, such as timestamps updating
+  x_ignore_mask:
+    - 0
+    - 600
+  # Range of pixels in y dim that has consistent irrelevant motion, such as timestamps updating
+  y_ignore_mask:
+    - 0
+    - 100
+  # Increase to focus on larger moving sections of the image, decrease for better recognition of small moving sections
+  perc_nonnoise_mask: 
+    val: 0.0002
+    msg: "Proportion of image detected as moving object by frame differencing in order to be determined as not noise and acceptable for use as mask: "
+  # Increase to recognize only larger distances moved (in pixels), decrease for greater sensitivity to all movement
+  pixel_diff: 
+    val: 1.85
+    msg: "Minimum significant feature point movement across 3 frames: "
+  # Increase to recognize when a larger proportion of the notable areas move, decrease for sensitivity to movement of individual points
+  perc_mvmt: 
+    val: 0.1
+    msg: "Minimum proportion of feature points with significant movement in a particular frame to qualify as overall movement: "
+  # Increase to recognize more consistent movement, decrease for greater sensitivity to very brief spurts of movement
+  mvmt_frms_per_sec: 
+    val: 9
+    msg: "Minimum num frames in a sec with significant movement to return that movement has occurred at that time: "
+  # If the video becomes unreliable for a set duration before/after the code errors, set parameter accordingly
+  err_range: 
+    val: 4
+    msg: "Range of seconds before or after an error where detected movement is ignored: "
+  # Can be increased if the contrast between the moving object and the background is large
+  frame_diff_thresh: 
+    val: 6 
+    msg: "Pixel intensity value minimum threshold to remain in mask after frame differencing: "
+  # Increase to search a more accurate area of potential movement during each second
+  frame_diff_num: 
+    val: 16
+    msg: "Number of consecutive frames to do frame differencing over: "
+  # Increase to eliminate larger sections of supposed noise from the area of focus
+  kernel_size: 
+    val: 5
+    msg: "Kernel size for cv noise removal method: "

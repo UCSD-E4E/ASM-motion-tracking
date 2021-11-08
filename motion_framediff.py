@@ -4,13 +4,14 @@ import cv2
 import sys
 import os
 import time
+import yaml
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 
 PERC_NONNOISE_MASK = 0.0002
-PERC_NONNOISE_MASK_MSG = "Proportion of image detected as foreground by background subtraction in order to be " \
+PERC_NONNOISE_MASK_MSG = "Proportion of image detected as moving object by frame differencing in order to be " \
                          "determined as not noise and acceptable for use as mask: "
-PIXEL_DIFF = 0.85  # across 3 frames
+PIXEL_DIFF = 1.85  # across 3 frames
 PIXEL_DIFF_MSG = "Minimum significant feature point movement across 3 frames: "
 PERC_MVMT = 0.1  # % of detected feature pts with >PIXEL_DIFF movement across 3 frames
 PERC_MVMT_MSG = "Minimum proportion of feature points with significant movement in a particular frame to qualify as " \
@@ -25,6 +26,8 @@ FRAME_DIFF_NUM = 16
 FRAME_DIFF_NUM_MSG = "Number of consecutive frames to do frame differencing over: "
 KERNEL_SIZE = 5  # size of kernel for noise removal
 KERNEL_SIZE_MSG = "Kernel size for cv noise removal method: "
+stream = open("configFD.yaml", "r")
+params = yaml.load(stream, Loader=yaml.SafeLoader)
 
 
 # create mask using frame differencing
@@ -35,16 +38,16 @@ def create_mask(init_mask, fqueue, prev_mask=None):
         # final mask is combination of the thresholded results
         for ifr in range(len(fqueue)-1):
             two_diff = cv2.absdiff(fqueue[ifr], fqueue[ifr+1])
-            retval, two_diff = cv2.threshold(two_diff, FRAME_DIFF_THRESH, 255, cv2.THRESH_BINARY)
+            retval, two_diff = cv2.threshold(two_diff, params["frame_diff_thresh"]["val"], 255, cv2.THRESH_BINARY)
             diff_img = cv2.bitwise_or(diff_img, two_diff)
     diff_img = cv2.bitwise_and(diff_img, init_mask)
     # retval, diff_img = cv2.threshold(diff_img, FRAME_DIFF_THRESH, 255, cv2.THRESH_BINARY)
     # cv2 medianBlur used to eliminate small white spots (more likely to be noise)
-    diff_img = cv2.medianBlur(diff_img, KERNEL_SIZE)
+    diff_img = cv2.medianBlur(diff_img, params["kernel_size"]["val"])
     img_size = np.shape(diff_img)[0] * np.shape(diff_img)[1]
     nonzero = cv2.countNonZero(diff_img) / img_size
     old = False
-    if nonzero > PERC_NONNOISE_MASK:
+    if nonzero > params["perc_nonnoise_mask"]["val"]:
         mask = diff_img
     elif not(prev_mask is None):
         mask = prev_mask
@@ -88,18 +91,14 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False, tim
             os.makedirs(filepath)
         outf = open(filepath + name[:-4] + ".txt", "w")
         # Write parameters
-        outf.write(PERC_NONNOISE_MASK_MSG + str(PERC_NONNOISE_MASK) + "\n")
-        outf.write(PIXEL_DIFF_MSG + str(PIXEL_DIFF) + "\n")
-        outf.write(PERC_MVMT_MSG + str(PERC_MVMT) + "\n")
-        outf.write(MVMT_FRMS_PER_SEC_MSG + str(MVMT_FRMS_PER_SEC) + "\n")
-        outf.write(FRAME_DIFF_THRESH_MSG + str(FRAME_DIFF_THRESH) + "\n")
-        outf.write(FRAME_DIFF_NUM_MSG + str(FRAME_DIFF_NUM) + "\n")
-        outf.write(KERNEL_SIZE_MSG + str(KERNEL_SIZE) + "\n")
+        for key, val in params.items():
+            if key != "x_ignore_mask" and key != "y_ignore_mask":
+                outf.write(val["msg"] + str(val["val"]) + "\n")
         delayoutq = collections.deque()
     # discard first frame, as it doesn't provide a clear image
     ret, old_frame = cam.read()
     q_frame = collections.deque()
-    for ifr in range(FRAME_DIFF_NUM):
+    for ifr in range(params["frame_diff_num"]["val"]):
         ret, old_frame = cam.read()
         old_gray = cv2.cvtColor(old_frame, cv2.COLOR_BGR2GRAY)
         q_frame.append(old_gray)
@@ -108,14 +107,18 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False, tim
     width = frame_gray.shape[1]
     height = frame_gray.shape[0]
     mask = np.zeros_like(frame_gray)
-    mask[0:100, 0:600] = 255
+    xelim0 = params["x_ignore_mask"][0]
+    xelim1 = params["x_ignore_mask"][1]
+    yelim0 = params["y_ignore_mask"][0]
+    yelim1 = params["y_ignore_mask"][1]
+    mask[yelim0:yelim1, xelim0:xelim1] = 255
     mask = cv2.bitwise_not(mask)
     fg_mask, used = create_mask(mask, q_frame)
     p0 = cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params)
     pback = p0
     pmove = np.zeros(p0.shape[0])
     spf = 1/cam.get(cv2.CAP_PROP_FPS)  # seconds per frame
-    frame_num = 1 + FRAME_DIFF_NUM
+    frame_num = 1 + params["frame_diff_num"]["val"]
     real_start = None
     if timename:
         real_start = datetime(int(name[0:4]), int(name[5:7]), int(name[8:10]), int(name[11:13]), int(name[14:16]),
@@ -143,7 +146,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False, tim
             # Print output in terminal for each second while processing
             print(hatching)
             # Allows us to ignore artifact-induced mvmt by requiring that mvmt occur across multiple frames
-            if hatching >= MVMT_FRMS_PER_SEC and not errored:
+            if hatching >= params["mvmt_frms_per_sec"]["val"] and not errored:
                 # Occurs if sufficient movement detected during second
                 print(sec_to_min(vidtime, real_start) + ": hatching")
                 if write:
@@ -167,11 +170,11 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False, tim
                     # Error output written
                     outf.write(q_msg + " occurred at time " + sec_to_min(q_time, real_start) + "\n")
                     delayoutq.popleft()
-                elif abs(q_time - last_error) <= 4:
+                elif abs(q_time - last_error) <= params["err_range"]["val"]:
                     # Movement-within-ERR_RANGE-seconds-to-an-error output written
                     outf.write(sec_to_min(q_time, real_start) + " dropped\n")
                     delayoutq.popleft()
-                elif vidtime - q_time >= 4:
+                elif vidtime - q_time >= params["err_range"]["val"]:
                     # Movement output written
                     outf.write(sec_to_min(q_time, real_start) + ": hatching over " + q_msg + " frames\n")
                     delayoutq.popleft()
@@ -182,7 +185,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False, tim
                     vidtime = frame_num * spf
                     continue
             else:
-                p0 = p0[pmove > MVMT_FRMS_PER_SEC]
+                p0 = p0[pmove > params["mvmt_frms_per_sec"]["val"]]
                 p0 = np.append(p0, cv2.goodFeaturesToTrack(frame_gray, mask=fg_mask, **feature_params), axis=0)
             pback = p0
             pmove = np.zeros(p0.shape[0])
@@ -213,7 +216,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False, tim
                     e,f = back.ravel()
                     # Check for noticeable change in position of freq pts across 2 frames (to ignore small jitters)
                     dist = ((a-e)**2 + (b-f)**2)**0.5
-                    if dist >= PIXEL_DIFF:
+                    if dist >= params["pixel_diff"]["val"]:
                         move_points += 1
                         pmove[i] += 1
                 # This section of code used to visualize feature points and tracked mvmt
@@ -229,7 +232,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False, tim
                     if k == 27:
                         break
                 # check for proportion of points moving
-                if move_points/good_new.shape[0] > PERC_MVMT:
+                if move_points/good_new.shape[0] > params["perc_mvmt"]["val"]:
                     hatching += 1
                 # Now update previous points
                 pback = good_old.reshape(-1,1,2)
@@ -252,7 +255,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False, tim
             q_msg = delayoutq[0][2]
             if q_mvmt is False:
                 outf.write(q_msg + " occurred at time " + sec_to_min(q_time, real_start) + "\n")
-            elif abs(q_time - last_error) <= 4:
+            elif abs(q_time - last_error) <= params["err_range"]["val"]:
                 outf.write(sec_to_min(q_time, real_start) + " dropped\n")
             else:
                 outf.write(sec_to_min(q_time, real_start) + ": hatching over " + q_msg + " frames\n")
@@ -272,7 +275,7 @@ def detect_motion(vidfolder, name, txtfolder=None, write=True, visual=False, tim
 #     print(sys.exc_info())
 path = "C:\\Users\\clair\\Documents\\E4E\\"
 folder = "bushmasters\\"
-detect_motion(path + folder, "2020.06.19-02.03.16.mp4", path + "testFilesFD\\", timename=True)
+detect_motion(path + folder, "2020.06.19-01.33.16.mp4", path + "testFilesRough\\", timename=True)
 # vids = os.listdir(path + folder)
 # for vid in vids:
 #     detect_motion(path + folder, vid, path + "testFilesFD\\")
